@@ -33,7 +33,14 @@ class Dashboard extends React.PureComponent {
       <>
         {isLoading ? (
           <LoadingIndicator inline />
-        ) : user.role === ROLES.Admin ? (
+        ) : !user.adminConfirm ? <h1 style={{
+          textAlign: 'center',
+          maxWidth: '500px',
+          margin: '0 auto',
+          marginTop: '50px'
+        }}>
+          Your account is not confirmed yet. Please wait for the admin to confirm your account.
+        </h1> : user.role === ROLES.Admin ? (
           <Admin
             user={user}
             isMenuOpen={isMenuOpen}

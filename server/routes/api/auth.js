@@ -43,6 +43,13 @@ router.post('/login', async (req, res) => {
       });
     }
 
+    if (!user.adminConfirmed) {
+      return res.status(400).json({
+        success:false,
+        error: 'Your account has not been confirmed by an admin yet.'
+      })
+    }
+
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {

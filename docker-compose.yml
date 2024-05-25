@@ -10,7 +10,7 @@ services:
       - PORT=3000
       - BASE_API_URL=api
       - CLIENT_URL=http://localhost:8080
-      - JWT_SECRET=update_your_JWT_secret
-      - MONGO_URI=update_your_mongo_URI
+      - JWT_SECRET=my_secret
+      - MONGO_URI=mongodb+srv://mern-sess:DgickkNiyZoUQ2sd@mern-sess.sokjozx.mongodb.net/?retryWrites=true&w=majority&appName=mern-sess
     ports:
       - '3000:3000'

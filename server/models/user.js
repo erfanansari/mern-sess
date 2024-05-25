@@ -48,6 +48,10 @@ const UserSchema = new Schema({
     default: ROLES.Member,
     enum: [ROLES.Admin, ROLES.Member, ROLES.Merchant]
   },
+  adminConfirmed: {
+    type: Boolean,
+    default: false
+  },
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date },
   updated: Date,
