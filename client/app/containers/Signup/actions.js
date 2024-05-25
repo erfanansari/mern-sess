@@ -21,6 +21,7 @@ import setToken from '../../utils/token';
 import handleError from '../../utils/error';
 import { allFieldsValidation } from '../../utils/validation';
 import { API_URL } from '../../constants';
+import { push } from 'connected-react-router';
 
 export const signupChange = (name, value) => {
   let formData = {};
@@ -78,13 +79,14 @@ export const signUp = () => {
         autoDismiss: 1
       };
 
-      localStorage.setItem('token', response.data.token);
+      // localStorage.setItem('token', response.data.token);
 
-      setToken(response.data.token);
+      // setToken(response.data.token);
 
-      dispatch(setAuth());
+      // dispatch(setAuth());
       dispatch(success(successfulOptions));
-      dispatch({ type: SIGNUP_RESET });
+      dispatch(push('/login'))
+      // dispatch({ type: SIGNUP_RESET });
     } catch (error) {
       const title = `Please try to signup again!`;
       handleError(error, dispatch, title);
@@ -94,3 +96,59 @@ export const signUp = () => {
     }
   };
 };
+
+
+// show success notification and redirect to login
+
+// export const signUpSuccess = () => {
+//   return async (dispatch, getState) => {
+//       try{
+
+//           const rules = {
+//             email: 'required|email',
+//             password: 'required|min:6',
+//             firstName: 'required',
+//             lastName: 'required'
+//           };
+
+//           const newUser = getState().signup.signupFormData;
+//           const isSubscribed = getState().signup.isSubscribed;
+
+//           const { isValid, errors } = allFieldsValidation(newUser, rules, {
+//             'required.email': 'Email is required.',
+//             'required.password': 'Password is required.',
+//             'required.firstName': 'First Name is required.',
+//             'required.lastName': 'Last Name is required.'
+//           });
+
+//           if (!isValid) {
+//             return dispatch({ type: SET_SIGNUP_FORM_ERRORS, payload: errors });
+//           }
+
+//           dispatch({ type: SET_SIGNUP_SUBMITTING, payload: true });
+//           dispatch({ type: SET_SIGNUP_LOADING, payload: true });
+
+//           const user = {
+//             isSubscribed,
+//             ...newUser
+//           };
+
+//           const response = await axios.post(`${API_URL}/auth/register`, user);
+
+//           const successfulOptions = {
+//             title: `You have signed up successfully!`,
+//             position: 'tr',
+//             autoDismiss: 3
+//           };
+
+//           dispatch(success(successfulOptions));
+//           dispatch(push('/login'))
+//         } catch (error) {
+//           const title = `Please try to signup again!`;
+//           handleError(error, dispatch, title);
+//         } finally {
+//           dispatch({ type: SET_SIGNUP_SUBMITTING, payload: false });
+//           dispatch({ type: SET_SIGNUP_LOADING, payload: false });
+//         }
+//   };
+// }

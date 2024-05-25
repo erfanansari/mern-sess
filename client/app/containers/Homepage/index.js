@@ -4,21 +4,32 @@
  *
  */
 
-import React from 'react';
+import { Link } from "react-router-dom";
+import React from "react";
 
-import { connect } from 'react-redux';
-import { Row, Col } from 'reactstrap';
+import { connect } from "react-redux";
+import { Row, Col } from "reactstrap";
 
-import actions from '../../actions';
-import banners from './banners.json';
-import CarouselSlider from '../../components/Common/CarouselSlider';
-import { responsiveOneItemCarousel } from '../../components/Common/CarouselSlider/utils';
+import actions from "../../actions";
+import banners from "./banners.json";
+import CarouselSlider from "../../components/Common/CarouselSlider";
+import { responsiveOneItemCarousel } from "../../components/Common/CarouselSlider/utils";
 
 class Homepage extends React.PureComponent {
   render() {
     return (
-      <div className='homepage'>
-        <Row className='flex-row'>
+      <div
+        className="homepage"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+        }}
+      >
+        <Link to="/dashboard">Account Details</Link>
+        <Link to="/dashboard">Account Details</Link>
+        <Link to="/dashboard">Account Details</Link>
+        {/* <Row className='flex-row'>
           <Col xs='12' lg='6' className='order-lg-2 mb-3 px-3 px-md-2'>
             <div className='home-carousel'>
               <CarouselSlider
@@ -47,13 +58,13 @@ class Homepage extends React.PureComponent {
               <img src='/images/banners/banner-6.jpg' />
             </div>
           </Col>
-        </Row>
+        </Row> */}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {};
 };
 
