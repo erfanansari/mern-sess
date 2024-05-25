@@ -26,9 +26,8 @@ class Homepage extends React.PureComponent {
           gap: "10px",
         }}
       >
-        <Link to="/dashboard">Account Details</Link>
-        <Link to="/dashboard">Account Details</Link>
-        <Link to="/dashboard">Account Details</Link>
+        <Link to="/jobs">jobs</Link>
+        <Link to="/events">events</Link>
         {/* <Row className='flex-row'>
           <Col xs='12' lg='6' className='order-lg-2 mb-3 px-3 px-md-2'>
             <div className='home-carousel'>
