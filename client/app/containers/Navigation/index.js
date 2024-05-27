@@ -234,6 +234,24 @@ class Navigation extends React.PureComponent {
                       </DropdownMenu>
                     </Dropdown>
                   )}
+                  {/* <NavItem>
+                    <NavLink
+                      tag={ActiveLink}
+                      to="/events"
+                      activeClassName="active"
+                    >
+                      Events
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      tag={ActiveLink}
+                      to="/jobs"
+                      activeClassName="active"
+                    >
+                      Jobs
+                    </NavLink>
+                  </NavItem> */}
                   <NavItem>
                     <NavLink
                       tag={ActiveLink}
