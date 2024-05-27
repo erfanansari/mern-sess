@@ -9,8 +9,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container } from "reactstrap";
 
-import Newsletter from "../../../containers/Newsletter";
-
 const Footer = () => {
   const infoLinks = [
     { id: 0, name: "Contact Us", to: "/contact" },
@@ -55,12 +53,6 @@ const Footer = () => {
             </div>
             <div className="block-content">
               <ul>{footerLinks}</ul>
-            </div>
-          </div>
-          <div className="footer-block">
-            <div className="block-title">
-              <h3 className="text-uppercase">Newsletter</h3>
-              <Newsletter />
             </div>
           </div>
         </div>
