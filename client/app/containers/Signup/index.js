@@ -49,11 +49,7 @@ class Signup extends React.PureComponent {
         <hr />
         <form onSubmit={handleSubmit} noValidate>
           <Row>
-            <Col
-              xs={{ size: 12, order: 2 }}
-              md={{ size: "6", order: 1 }}
-              className="p-0"
-            >
+            <Col xs={{ size: 12, order: 2 }} className="p-0">
               <Col xs="12" md="12">
                 <Input
                   type={"text"}
@@ -107,21 +103,8 @@ class Signup extends React.PureComponent {
                 />
               </Col>
             </Col>
-            <Col
-              xs={{ size: 12, order: 1 }}
-              md={{ size: "6", order: 2 }}
-              className="mb-2 mb-md-0"
-            >
-              <SignupProvider />
-            </Col>
           </Row>
           <hr />
-          <Checkbox
-            id={"subscribe"}
-            label={"Subscribe to newsletter"}
-            checked={isSubscribed}
-            onChange={subscribeChange}
-          />
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
             <Button
               type="submit"

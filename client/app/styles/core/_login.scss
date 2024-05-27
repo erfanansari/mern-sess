@@ -1,4 +1,11 @@
 // (Login, SignUp, forgetPassword,resetPassword) => Styles
+.signup-form,
+.login-form,
+.forgot-password-form {
+  margin-inline: auto;
+  max-width: 480px;
+}
+
 .signup-form {
   .checkbox {
     margin-bottom: 20px;
