@@ -15,7 +15,6 @@ import actions from "../../actions";
 import Input from "../../components/Common/Input";
 import Button from "../../components/Common/Button";
 import LoadingIndicator from "../../components/Common/LoadingIndicator";
-import SignupProvider from "../../components/Common/SignupProvider";
 
 class Login extends React.PureComponent {
   render() {

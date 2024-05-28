@@ -6,7 +6,7 @@ An ecommerce store built with MERN stack, and utilizes third party API's. This e
 
 1. Buyers browse the store categories, products and brands
 2. Sellers or Merchants manage their own brand component
-3. Admins manage and control the entire store components 
+3. Admins manage and control the entire store components
 
 
 * features:
@@ -37,7 +37,7 @@ $ docker compose -f dockercompose.yml up
 
 * The seed command will create an admin user in the database
 * The email and password are passed with the command as arguments
-* Like below command, replace brackets with email and password. 
+* Like below command, replace brackets with email and password.
 * For more information, see code [here](server/utils/seed.js)
 
 ```
@@ -97,7 +97,7 @@ $ npm start
 - Add a `.vscode` directory
 - Create a file `settings.json` inside `.vscode`
 - Install Prettier - Code formatter in VSCode
-- Add the following snippet:  
+- Add the following snippet:
 
 ```json
 
@@ -112,3 +112,11 @@ $ npm start
 
 ```
 
+
+# - Job model is needed
+# - User model is needed
+# - Admin should be able to create events like seminars, workshops and meetings(this can be labeld as categories)
+# - User should be able to search between different events
+# - Event model is needed
+# - User should be able to participate in a an event
+# - Guest user can search between users and jobs
