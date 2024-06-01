@@ -14,6 +14,7 @@ import actions from "../../actions";
 import banners from "./banners.json";
 import CarouselSlider from "../../components/Common/CarouselSlider";
 import { responsiveOneItemCarousel } from "../../components/Common/CarouselSlider/utils";
+import List from "../Address/List";
 
 class Homepage extends React.PureComponent {
   render() {
@@ -26,8 +27,7 @@ class Homepage extends React.PureComponent {
           gap: "10px",
         }}
       >
-        {/* <Link to="/jobs">jobs</Link> */}
-        <Link to="/events">events</Link>
+        <List noHeader />
         {/* <Row className='flex-row'>
           <Col xs='12' lg='6' className='order-lg-2 mb-3 px-3 px-md-2'>
             <div className='home-carousel'>

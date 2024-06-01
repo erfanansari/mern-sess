@@ -9,7 +9,7 @@
     },
     { "to": "/event", "name": "رویداد ها", "prefix": "/dashboard" },
     { "to": "/brand", "name": "انواع رویداد", "prefix": "/dashboard" },
-    { "to": "/address", "name": "شغل ها", "prefix": "/dashboard" },
+    { "to": "/job", "name": "شغل ها", "prefix": "/dashboard" },
     { "to": "/users", "name": "کاربران", "prefix": "/dashboard" }
   ],
   "ROLE MEMBER": [

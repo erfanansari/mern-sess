@@ -32,7 +32,7 @@ const Customer = (props) => {
               {!isProviderAllowed(user.provider) && (
                 <Route path="/dashboard/security" component={AccountSecurity} />
               )}
-              <Route path="/dashboard/address" component={Address} />
+              <Route path="/dashboard/job" component={Address} />
               <Route path="/dashboard/orders" component={Order} />
               <Route path="/dashboard/wishlist" component={Wishlist} />
               <Route path="*" component={Page404} />

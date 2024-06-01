@@ -32,7 +32,7 @@ const Merchant = (props) => {
             <Switch>
               <Route exact path="/dashboard" component={Account} />
               <Route path="/dashboard/security" component={AccountSecurity} />
-              <Route path="/dashboard/address" component={Address} />
+              <Route path="/dashboard/job" component={Address} />
               <Route path="/dashboard/event" component={Product} />
               <Route path="/dashboard/brand" component={Brand} />
               <Route path="/dashboard/orders" component={Order} />

@@ -164,7 +164,7 @@ class ProductPage extends React.PureComponent {
             />
           </>
         ) : (
-          <NotFound message="No product found." />
+          <NotFound message="رویدادی یافت نشد" />
         )}
       </div>
     );

@@ -4,14 +4,14 @@
  *
  */
 
-import React from 'react';
+import React from "react";
 
 class Radio extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      size: ''
+      size: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,9 +19,9 @@ class Radio extends React.Component {
 
   handleChange(event) {
     this.setState({
-      size: event.target.value
+      size: event.target.value,
     });
-    this.props.handleChangeSubmit(event.target.name,event.target.value);
+    this.props.handleChangeSubmit(event.target.name, event.target.value);
   }
 
   render() {
@@ -38,32 +38,6 @@ class Radio extends React.Component {
                 onChange={this.handleChange}
               />
               Newest First
-            </label>
-          </li>
-
-          <li>
-            <label>
-              <input
-                name="sorting"
-                type="radio"
-                value="Price High to Low"
-                checked={this.state.size === "Price High to Low"}
-                onChange={this.handleChange}
-              />
-              Price High to Low
-            </label>
-          </li>
-
-          <li>
-            <label>
-              <input
-                name="sorting"
-                type="radio"
-                value="Price Low to High"
-                checked={this.state.size === "Price Low to High"}
-                onChange={this.handleChange}
-              />
-              Price Low to High
             </label>
           </li>
         </ul>

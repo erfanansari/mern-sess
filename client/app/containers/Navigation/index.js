@@ -245,18 +245,14 @@ class Navigation extends React.PureComponent {
                   <NavItem>
                     <NavLink
                       tag={ActiveLink}
-                      to="/shop"
+                      to="/events"
                       activeClassName="active"
                     >
                       رویداد ها
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink
-                      tag={ActiveLink}
-                      to="/shop"
-                      activeClassName="active"
-                    >
+                    <NavLink tag={ActiveLink} to="/" activeClassName="active">
                       شغل ها
                     </NavLink>
                   </NavItem>

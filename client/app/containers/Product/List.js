@@ -21,7 +21,21 @@ class List extends React.PureComponent {
   }
 
   render() {
-    const { history, products, isLoading } = this.props;
+    const { history, products, isLoading, noHeader } = this.props;
+
+    if (noHeader) {
+      return (
+        <>
+          {isLoading ? (
+            <LoadingIndicator inline />
+          ) : products.length > 0 ? (
+            <ProductList products={products} />
+          ) : (
+            <NotFound message="رویدادی یافت نشد." />
+          )}
+        </>
+      );
+    }
 
     return (
       <>

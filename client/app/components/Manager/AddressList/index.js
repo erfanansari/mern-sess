@@ -18,11 +18,16 @@ const AddressList = (props) => {
       {addresses.map((address, index) => {
         return (
           <Link
-            to={`/dashboard/address/edit/${address._id}`}
+            to={`/dashboard/job/edit/${address._id}`}
             key={index}
             className="d-block"
           >
-            <div className="d-flex align-items-center mb-3 address-box">
+            <div
+              className="d-flex align-items-center mb-3 address-box"
+              style={{
+                border: "1px solid #f1f1f1",
+              }}
+            >
               <div className="flex-1 p-3 p-lg-4">
                 {address.isDefault ? (
                   <div className="d-flex align-items-center justify-content-between mb-2">

@@ -25,7 +25,7 @@ import Notification from "../Notification";
 import ForgotPassword from "../ForgotPassword";
 import ResetPassword from "../ResetPassword";
 import Shop from "../Shop";
-import Jobs from "../Jobs";
+import Jobs from "../Events";
 import BrandsPage from "../BrandsPage";
 import ProductPage from "../ProductPage";
 import Sell from "../Sell";
@@ -83,8 +83,7 @@ class Application extends React.PureComponent {
             <div className="wrapper">
               <Switch>
                 <Route exact path="/" component={HomePage} />
-                <Route path="/jobs" component={Jobs} />
-                {/* <Route path="/jobs/:id" component={Shop} /> */}
+                <Route path="/events" component={Jobs} />
                 <Route path="/shop" component={Shop} />
                 <Route path="/sell" component={Sell} />
                 <Route path="/contact" component={Contact} />

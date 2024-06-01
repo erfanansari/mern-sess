@@ -20,7 +20,7 @@ router.use("/auth", authRoutes);
 router.use("/user", userRoutes);
 
 // address routes
-router.use("/address", addressRoutes);
+router.use("/job", addressRoutes);
 
 // product routes
 router.use("/event", productRoutes);
