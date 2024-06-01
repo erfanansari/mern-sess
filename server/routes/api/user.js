@@ -40,7 +40,7 @@ router.get("/", auth, async (req, res) => {
   try {
     const { page = 1, limit = 10 } = req.query;
 
-    const users = await User.find({}, { password: 0, _id: 0, googleId: 0 })
+    const users = await User.find({}, { password: 0, googleId: 0 })
       .sort("-created")
       .populate("merchant", "name")
       .limit(limit * 1)
@@ -86,10 +86,11 @@ router.get("/me", auth, async (req, res) => {
 
 router.put("/", auth, async (req, res) => {
   try {
-    const user = req.user._id;
+    const user = req.body.userId ?? req.user._id;
     const update = req.body.profile;
     const query = { _id: user };
 
+    console.log("update", update);
     const userDoc = await User.findOneAndUpdate(query, update, {
       new: true,
     });

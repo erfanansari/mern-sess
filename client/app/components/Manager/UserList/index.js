@@ -8,6 +8,7 @@ import React from "react";
 
 import { formatDate } from "../../../utils/date";
 import UserRole from "../UserRole";
+import ConfirmUser from "./ConfirmUser";
 
 const UserList = (props) => {
   const { users } = props;
@@ -28,6 +29,7 @@ const UserList = (props) => {
           <p className="mb-0">
             <UserRole user={user} className="d-inline-block mt-2" />
           </p>
+          <ConfirmUser user={user} />
         </div>
       ))}
     </div>

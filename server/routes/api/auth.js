@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
     if (!user.adminConfirmed) {
       return res.status(400).json({
         success: false,
-        error: "Your account has not been confirmed by an admin yet.",
+        error: "حساب کاربری شما توسط مدیر تایید نشده است.",
       });
     }
 

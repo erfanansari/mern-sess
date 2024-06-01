@@ -1,4 +1,4 @@
-/* MERN Theme */
+/* SESS Theme */
 
 // Import utilities
 @import "core/utils/fonts";
@@ -16,4 +16,12 @@
 input,
 textarea {
   text-align: right;
+}
+
+html,
+body {
+  font-family: "Vazirmatn", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
