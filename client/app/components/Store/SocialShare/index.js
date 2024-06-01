@@ -20,7 +20,7 @@ const SocialShare = (props) => {
     product.name
   } product on Mern SESS!  Here's the link, ${
     window.location.protocol !== "https" ? "http" : "https"
-  }://${window.location.host}/product/${product.slug}`;
+  }://${window.location.host}/event/${product.slug}`;
 
   return (
     <ul className="d-flex flex-row mx-0 mb-0 justify-content-center justify-content-md-start share-box">

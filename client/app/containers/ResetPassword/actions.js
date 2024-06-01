@@ -39,13 +39,11 @@ export const resetPassword = (token) => {
       const user = getState().resetPassword.resetFormData;
 
       const { isValid, errors } = allFieldsValidation(user, rules, {
-        "required.password": "Password is required.",
-        "min.password": "Password must be at least 6 characters.",
-        "required.confirmPassword": "Confirm password is required.",
-        "min.confirmPassword":
-          "Confirm password must be at least 6 characters.",
-        "same.confirmPassword":
-          "Confirm password and password fields must match.",
+        "required.password": "رمز عبور الزامی است.",
+        "min.password": "رمز عبور باید حداقل 6 کاراکتر باشد.",
+        "required.confirmPassword": "تکرار رمز عبور الزامی است.",
+        "min.confirmPassword": "تکرار رمز عبور باید حداقل 6 کاراکتر باشد.",
+        "same.confirmPassword": "رمز عبور و تکرار آن باید یکسان باشند.",
       });
 
       if (!isValid) {

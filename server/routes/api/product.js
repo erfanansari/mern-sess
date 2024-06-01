@@ -211,7 +211,7 @@ router.post(
 
       res.status(200).json({
         success: true,
-        message: `Product has been added successfully!`,
+        message: "رویداد با موفیقت اضافه شد",
         product: savedProduct,
       });
     } catch (error) {
@@ -341,7 +341,7 @@ router.put(
 
       res.status(200).json({
         success: true,
-        message: "Product has been updated successfully!",
+        message: "رویداد با موفیقت اپدیت شد",
       });
     } catch (error) {
       res.status(400).json({
@@ -367,7 +367,7 @@ router.put(
 
       res.status(200).json({
         success: true,
-        message: "Product has been updated successfully!",
+        message: "رویداد با موفیقت اپدیت شد",
       });
     } catch (error) {
       res.status(400).json({
@@ -387,7 +387,7 @@ router.delete(
 
       res.status(200).json({
         success: true,
-        message: `Product has been deleted successfully!`,
+        message: "رویداد با موفیقت حذف شد",
         product,
       });
     } catch (error) {

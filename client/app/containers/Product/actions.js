@@ -93,7 +93,7 @@ export const filterProducts = (n, v) => {
 
       dispatch({ type: SET_ADVANCED_FILTERS, payload });
       const sortOrder = getSortOrder(payload.order);
-      const response = await axios.get(`${API_URL}/product/list`, {
+      const response = await axios.get(`${API_URL}/event/list`, {
         params: { ...payload, sortOrder },
       });
       const { products, totalPages, currentPage, count } = response.data;
@@ -127,7 +127,7 @@ export const fetchStoreProduct = (slug) => {
     dispatch(setProductLoading(true));
 
     try {
-      const response = await axios.get(`${API_URL}/product/item/${slug}`);
+      const response = await axios.get(`${API_URL}/event/item/${slug}`);
 
       const inventory = response.data.product.quantity;
       const product = { ...response.data.product, inventory };
@@ -147,7 +147,7 @@ export const fetchStoreProduct = (slug) => {
 export const fetchProductsSelect = () => {
   return async (dispatch, getState) => {
     try {
-      const response = await axios.get(`${API_URL}/product/list/select`);
+      const response = await axios.get(`${API_URL}/event/list/select`);
 
       const formattedProducts = formatSelectOptions(response.data.products);
 
@@ -167,7 +167,7 @@ export const fetchProducts = () => {
     try {
       dispatch(setProductLoading(true));
 
-      const response = await axios.get(`${API_URL}/product`);
+      const response = await axios.get(`${API_URL}/event`);
 
       dispatch({
         type: FETCH_PRODUCTS,
@@ -185,7 +185,7 @@ export const fetchProducts = () => {
 export const fetchProduct = (id) => {
   return async (dispatch, getState) => {
     try {
-      const response = await axios.get(`${API_URL}/product/${id}`);
+      const response = await axios.get(`${API_URL}/event/${id}`);
 
       const inventory = response.data.product.quantity;
 
@@ -242,32 +242,18 @@ export const addProduct = () => {
       };
 
       const { isValid, errors } = allFieldsValidation(newProduct, rules, {
-        "required.name": "Name is required.",
-        "required.description": "Description is required.",
-        "max.description":
-          "Description may not be greater than 200 characters.",
-        "required.location": "Location is required.",
-        "required.brand": "Brand is required.",
+        "required.name": "نام لازم است.",
+        "required.description": "توضیحات لازم است.",
+        "max.description": "توضیحات نمی تواند بیشتر از 200 کاراکتر باشد.",
+        "required.location": "مکان لازم است.",
+        "required.brand": "دسته لازم است.",
       });
 
       if (!isValid) {
         return dispatch({ type: SET_PRODUCT_FORM_ERRORS, payload: errors });
       }
-      // const formData = new FormData();
-      //   for (const key in newProduct) {
-      //     if (newProduct.hasOwnProperty(key)) {
-      //       if (key === "brand" && newProduct[key] === null) {
-      //         continue;
-      //       } else {
-      //         formData.set(key, newProduct[key]);
-      //     }
-      //   }
-      // }
 
-      // console.log('formData', formData)
-
-      const response = await axios.post(`${API_URL}/product/add`, newProduct, {
-        // headers: { "Content-Type": "multipart/form-data" },
+      const response = await axios.post(`${API_URL}/event/add`, newProduct, {
         headers: { "Content-Type": "application/json" },
       });
 
@@ -317,15 +303,14 @@ export const updateProduct = () => {
       };
 
       const { isValid, errors } = allFieldsValidation(newProduct, rules, {
-        "required.name": "Name is required.",
-        "required.slug": "Slug is required.",
+        "required.name": "نام لازم است.",
+        "required.description": "توضیحات لازم است.",
+        "max.description": "توضیحات نمی تواند بیشتر از 200 کاراکتر باشد.",
+        "required.location": "مکان لازم است.",
+        "required.brand": "دسته لازم است.",
+        "required.slug": "نامک لازم است.",
         "alpha_dash.slug":
-          "Slug may have alpha-numeric characters, as well as dashes and underscores only.",
-        "required.description": "Description is required.",
-        "max.description":
-          "Description may not be greater than 200 characters.",
-        "required.location": "Location is required.",
-        "required.brand": "Brand is required.",
+          "نامک فقط می تواند شامل حروف، اعداد، خط فاصله و زیر خط باشد.",
       });
 
       if (!isValid) {
@@ -335,7 +320,7 @@ export const updateProduct = () => {
         });
       }
 
-      const response = await axios.put(`${API_URL}/product/${product._id}`, {
+      const response = await axios.put(`${API_URL}/event/${product._id}`, {
         product: newProduct,
       });
 
@@ -360,7 +345,7 @@ export const updateProduct = () => {
 export const activateProduct = (id, value) => {
   return async (dispatch, getState) => {
     try {
-      const response = await axios.put(`${API_URL}/product/${id}/active`, {
+      const response = await axios.put(`${API_URL}/event/${id}/active`, {
         product: {
           isActive: value,
         },
@@ -385,7 +370,7 @@ export const activateProduct = (id, value) => {
 export const deleteProduct = (id) => {
   return async (dispatch, getState) => {
     try {
-      const response = await axios.delete(`${API_URL}/product/delete/${id}`);
+      const response = await axios.delete(`${API_URL}/event/delete/${id}`);
 
       const successfulOptions = {
         title: `${response.data.message}`,

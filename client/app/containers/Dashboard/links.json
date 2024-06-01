@@ -7,16 +7,10 @@
       "prefix": "/dashboard",
       "provider": ["Email"]
     },
-    { "to": "/product", "name": "رویداد ها", "prefix": "/dashboard" },
+    { "to": "/event", "name": "رویداد ها", "prefix": "/dashboard" },
     { "to": "/brand", "name": "انواع رویداد", "prefix": "/dashboard" },
     { "to": "/address", "name": "شغل ها", "prefix": "/dashboard" },
-    { "to": "/users", "name": "کاربران", "prefix": "/dashboard" },
-    { "to": "/category", "name": "Categories", "prefix": "/dashboard" },
-    { "to": "/merchant", "name": "Merchants", "prefix": "/dashboard" },
-    { "to": "/orders", "name": "Orders", "prefix": "/dashboard" },
-    { "to": "/review", "name": "Reviews", "prefix": "/dashboard" },
-    { "to": "/wishlist", "name": "WishList", "prefix": "/dashboard" },
-    { "to": "/support", "name": "Support" }
+    { "to": "/users", "name": "کاربران", "prefix": "/dashboard" }
   ],
   "ROLE MEMBER": [
     { "to": "", "name": "جزئیات کاربر", "prefix": "/dashboard" },

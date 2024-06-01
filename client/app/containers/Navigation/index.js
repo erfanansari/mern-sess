@@ -77,7 +77,7 @@ class Navigation extends React.PureComponent {
     };
 
     return (
-      <Link to={`/product/${suggestion.slug}`}>
+      <Link to={`/event/${suggestion.slug}`}>
         <div className="d-flex">
           <img
             className="item-image"
@@ -177,7 +177,7 @@ class Navigation extends React.PureComponent {
                 renderSuggestion={this.renderSuggestion}
                 inputProps={inputProps}
                 onSuggestionSelected={(_, item) => {
-                  history.push(`/product/${item.suggestion.slug}`);
+                  history.push(`/event/${item.suggestion.slug}`);
                 }}
               />
             </Col>

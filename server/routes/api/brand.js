@@ -32,7 +32,7 @@ router.post("/add", auth, role.check(ROLES.Admin), async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: `Brand has been added successfully!`,
+      message: "دسته بندی با موفقیت اضافه شد.",
       brand: brandDoc,
     });
   } catch (error) {
@@ -168,7 +168,7 @@ router.put(
 
       res.status(200).json({
         success: true,
-        message: "Brand has been updated successfully!",
+        message: "دسته بندی با موفقیت اپدیت شد.",
       });
     } catch (error) {
       res.status(400).json({
@@ -200,7 +200,7 @@ router.put(
 
       res.status(200).json({
         success: true,
-        message: "Brand has been updated successfully!",
+        message: "دسته بندی با موفقیت اپدیت شد.",
       });
     } catch (error) {
       res.status(400).json({
@@ -222,7 +222,7 @@ router.delete(
 
       res.status(200).json({
         success: true,
-        message: `Brand has been deleted successfully!`,
+        message: "دسته بندی با موفقیت حذف شد.",
         brand,
       });
     } catch (error) {

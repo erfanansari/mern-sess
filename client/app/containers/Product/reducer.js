@@ -40,7 +40,7 @@ const initialState = {
     isActive: true,
     brand: {
       value: 0,
-      label: "No Options Selected",
+      label: "گزینه ای انتخاب نشده است",
     },
   },
   isLoading: false,
@@ -162,7 +162,7 @@ const productReducer = (state = initialState, action) => {
           isActive: true,
           brand: {
             value: 0,
-            label: "No Options Selected",
+            label: "گزینه ای انتخاب نشده است",
           },
         },
         product: {
