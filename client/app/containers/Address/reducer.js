@@ -14,30 +14,26 @@ import {
   RESET_ADDRESS,
   ADD_ADDRESS,
   REMOVE_ADDRESS,
-  SET_ADDRESS_LOADING
-} from './constants';
+  SET_ADDRESS_LOADING,
+} from "./constants";
 
 const initialState = {
   addresses: [],
   addressFormData: {
-    address: '',
-    city: '',
-    state: '',
-    country: '',
-    zipCode: '',
-    isDefault: false
+    title: "",
+    description: "",
+    employer: "",
+    location: "",
   },
   address: {
-    _id: '',
-    address: '',
-    city: '',
-    state: '',
-    country: '',
-    zipCode: '',
-    isDefault: false
+    _id: "",
+    title: "",
+    description: "",
+    employer: "",
+    location: "",
   },
   formErrors: {},
-  editFormErrors: {}
+  editFormErrors: {},
 };
 
 const addressReducer = (state = initialState, action) => {
@@ -45,71 +41,69 @@ const addressReducer = (state = initialState, action) => {
     case FETCH_ADDRESSES:
       return {
         ...state,
-        addresses: action.payload
+        addresses: action.payload,
       };
     case FETCH_ADDRESS:
       return {
         ...state,
         address: action.payload,
-        editFormErrors: {}
+        editFormErrors: {},
       };
     case ADD_ADDRESS:
       return {
         ...state,
-        addresses: [...state.addresses, action.payload]
+        addresses: [...state.addresses, action.payload],
       };
     case REMOVE_ADDRESS:
-      const index = state.addresses.findIndex(b => b._id === action.payload);
+      const index = state.addresses.findIndex((b) => b._id === action.payload);
       return {
         ...state,
         addresses: [
           ...state.addresses.slice(0, index),
-          ...state.addresses.slice(index + 1)
-        ]
+          ...state.addresses.slice(index + 1),
+        ],
       };
     case ADDRESS_CHANGE:
       return {
         ...state,
         addressFormData: {
           ...state.addressFormData,
-          ...action.payload
-        }
+          ...action.payload,
+        },
       };
     case ADDRESS_EDIT_CHANGE:
       return {
         ...state,
         address: {
           ...state.address,
-          ...action.payload
-        }
+          ...action.payload,
+        },
       };
     case SET_ADDRESS_FORM_ERRORS:
       return {
         ...state,
-        formErrors: action.payload
+        formErrors: action.payload,
       };
     case SET_ADDRESS_FORM_EDIT_ERRORS:
       return {
         ...state,
-        editFormErrors: action.payload
+        editFormErrors: action.payload,
       };
     case RESET_ADDRESS:
       return {
         ...state,
         addressFormData: {
-          address: '',
-          city: '',
-          state: '',
-          country: '',
-          zipCode: '',
-          isDefault: false
+          title: "",
+          description: "",
+          employer: "",
+          location: "",
         },
-        formErrors: {}
+        formErrors: {},
       };
     case SET_ADDRESS_LOADING:
       return {
         ...state,
-        isLoading: action.payload
+        isLoading: action.payload,
       };
     default:
       return state;

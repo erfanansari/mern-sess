@@ -4,15 +4,15 @@
  *
  */
 
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import actions from '../../actions';
+import actions from "../../actions";
 
-import EditAddress from '../../components/Manager/EditAddress';
-import SubPage from '../../components/Manager/SubPage';
-import NotFound from '../../components/Common/NotFound';
+import EditAddress from "../../components/Manager/EditAddress";
+import SubPage from "../../components/Manager/SubPage";
+import NotFound from "../../components/Common/NotFound";
 
 class Edit extends React.PureComponent {
   componentDidMount() {
@@ -35,13 +35,13 @@ class Edit extends React.PureComponent {
       addressEditChange,
       defaultChange,
       updateAddress,
-      deleteAddress
+      deleteAddress,
     } = this.props;
 
     return (
       <SubPage
-        title='Edit Address'
-        actionTitle='Cancel'
+        title="ویرایش شغل"
+        actionTitle="لغو"
         handleAction={() => history.goBack()}
       >
         {address?._id ? (
@@ -54,17 +54,17 @@ class Edit extends React.PureComponent {
             defaultChange={defaultChange}
           />
         ) : (
-          <NotFound message='No address found.' />
+          <NotFound message="هیچ شغلی پیدا نشد" />
         )}
       </SubPage>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     address: state.address.address,
-    formErrors: state.address.editFormErrors
+    formErrors: state.address.editFormErrors,
   };
 };
 

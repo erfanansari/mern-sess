@@ -4,29 +4,24 @@
  *
  */
 
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import actions from '../../actions';
+import actions from "../../actions";
 
-import AddAddress from '../../components/Manager/AddAddress';
-import SubPage from '../../components/Manager/SubPage';
+import AddAddress from "../../components/Manager/AddAddress";
+import SubPage from "../../components/Manager/SubPage";
 
 class Add extends React.PureComponent {
   render() {
-    const {
-      history,
-      addressFormData,
-      formErrors,
-      addressChange,
-      addAddress
-    } = this.props;
+    const { history, addressFormData, formErrors, addressChange, addAddress } =
+      this.props;
 
     return (
       <SubPage
-        title='Add Address'
-        actionTitle='Cancel'
+        title="افزودن شغل"
+        actionTitle="لغو"
         handleAction={() => history.goBack()}
       >
         <AddAddress
@@ -40,10 +35,10 @@ class Add extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     addressFormData: state.address.addressFormData,
-    formErrors: state.address.formErrors
+    formErrors: state.address.formErrors,
   };
 };
 

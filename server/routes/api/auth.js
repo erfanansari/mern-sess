@@ -34,7 +34,7 @@ router.post("/login", async (req, res) => {
     if (!user) {
       return res
         .status(400)
-        .send({ error: "No user found for this email address." });
+        .send({ error: "هیچ کاربری با این ایمیل پیدا نشد" });
     }
 
     if (user && user.provider !== EMAIL_PROVIDER.Email) {
@@ -108,9 +108,7 @@ router.post("/register", async (req, res) => {
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      return res
-        .status(400)
-        .json({ error: "That email address is already in use." });
+      return res.status(400).json({ error: "این ایمیل قبلا ثبت شده است" });
     }
 
     const user = new User({
@@ -141,14 +139,12 @@ router.post("/register", async (req, res) => {
 
     res.status(200).json({
       success: true,
-      subscribed,
       token: `Bearer ${token}`,
       user: {
         id: registeredUser.id,
         firstName: registeredUser.firstName,
         lastName: registeredUser.lastName,
         email: registeredUser.email,
-        role: registeredUser.role,
       },
     });
   } catch (error) {
@@ -173,7 +169,7 @@ router.post("/forgot", async (req, res) => {
     if (!existingUser) {
       return res
         .status(400)
-        .send({ error: "No user found for this email address." });
+        .send({ error: "هیچ کاربری با این ایمیل پیدا نشد" });
     }
 
     const buffer = crypto.randomBytes(48);
@@ -260,9 +256,7 @@ router.post("/reset", auth, async (req, res) => {
 
     const existingUser = await User.findOne({ email });
     if (!existingUser) {
-      return res
-        .status(400)
-        .json({ error: "That email address is already in use." });
+      return res.status(400).json({ error: "این ایمیل قبلا ثبت شده است" });
     }
 
     const isMatch = await bcrypt.compare(password, existingUser.password);

@@ -117,12 +117,15 @@ const EditProduct = (props) => {
         </Row>
         <hr />
         <div className="d-flex flex-column flex-md-row">
-          <Button type="submit" text="ذخیره" />
+          <Button
+            type="submit"
+            text="ذخیره"
+            className="mb-3 mb-md-0 mr-0 mr-md-3"
+          />
           <Button
             variant="danger"
             text="حذف"
             onClick={() => deleteProduct(product._id)}
-            className="mb-3 mb-md-0 mr-0 mr-md-3"
           />
         </div>
       </form>

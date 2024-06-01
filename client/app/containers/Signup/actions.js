@@ -4,8 +4,8 @@
  *
  */
 
-import { success } from 'react-notification-system-redux';
-import axios from 'axios';
+import { success } from "react-notification-system-redux";
+import axios from "axios";
 
 import {
   SIGNUP_CHANGE,
@@ -13,15 +13,15 @@ import {
   SET_SIGNUP_LOADING,
   SET_SIGNUP_SUBMITTING,
   SUBSCRIBE_CHANGE,
-  SET_SIGNUP_FORM_ERRORS
-} from './constants';
+  SET_SIGNUP_FORM_ERRORS,
+} from "./constants";
 
-import { setAuth } from '../Authentication/actions';
-import setToken from '../../utils/token';
-import handleError from '../../utils/error';
-import { allFieldsValidation } from '../../utils/validation';
-import { API_URL } from '../../constants';
-import { push } from 'connected-react-router';
+import { setAuth } from "../Authentication/actions";
+import setToken from "../../utils/token";
+import handleError from "../../utils/error";
+import { allFieldsValidation } from "../../utils/validation";
+import { API_URL } from "../../constants";
+import { push } from "connected-react-router";
 
 export const signupChange = (name, value) => {
   let formData = {};
@@ -29,13 +29,13 @@ export const signupChange = (name, value) => {
 
   return {
     type: SIGNUP_CHANGE,
-    payload: formData
+    payload: formData,
   };
 };
 
 export const subscribeChange = () => {
   return {
-    type: SUBSCRIBE_CHANGE
+    type: SUBSCRIBE_CHANGE,
   };
 };
 
@@ -43,20 +43,20 @@ export const signUp = () => {
   return async (dispatch, getState) => {
     try {
       const rules = {
-        email: 'required|email',
-        password: 'required|min:6',
-        firstName: 'required',
-        lastName: 'required'
+        email: "required|email",
+        password: "required|min:6",
+        firstName: "required",
+        lastName: "required",
       };
 
       const newUser = getState().signup.signupFormData;
       const isSubscribed = getState().signup.isSubscribed;
 
       const { isValid, errors } = allFieldsValidation(newUser, rules, {
-        'required.email': 'Email is required.',
-        'required.password': 'Password is required.',
-        'required.firstName': 'First Name is required.',
-        'required.lastName': 'Last Name is required.'
+        "required.email": "ایمیل لازم است",
+        "required.password": "رمز عبور لازم است",
+        "required.firstName": "نام لازم است",
+        "required.lastName": "نام خانوادگی لازم است",
       });
 
       if (!isValid) {
@@ -68,15 +68,15 @@ export const signUp = () => {
 
       const user = {
         isSubscribed,
-        ...newUser
+        ...newUser,
       };
 
       const response = await axios.post(`${API_URL}/auth/register`, user);
 
       const successfulOptions = {
-        title: `You have signed up successfully!`,
-        position: 'tr',
-        autoDismiss: 1
+        title: `ثبت نام شما با موفقیت انجام شد!`,
+        position: "tr",
+        autoDismiss: 1,
       };
 
       // localStorage.setItem('token', response.data.token);
@@ -85,10 +85,10 @@ export const signUp = () => {
 
       // dispatch(setAuth());
       dispatch(success(successfulOptions));
-      dispatch(push('/login'))
+      dispatch(push("/login"));
       // dispatch({ type: SIGNUP_RESET });
     } catch (error) {
-      const title = `Please try to signup again!`;
+      const title = `خطا در ثبت نام`;
       handleError(error, dispatch, title);
     } finally {
       dispatch({ type: SET_SIGNUP_SUBMITTING, payload: false });
@@ -96,7 +96,6 @@ export const signUp = () => {
     }
   };
 };
-
 
 // show success notification and redirect to login
 

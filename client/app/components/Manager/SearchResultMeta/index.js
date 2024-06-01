@@ -4,13 +4,13 @@
  *
  */
 
-import React from 'react';
+import React from "react";
 
-const SearchResultMeta = props => {
+const SearchResultMeta = (props) => {
   const { count, label } = props;
 
   return (
-    <p className='fw-normal'>
+    <p className="fw-normal" style={{ textAlign: "right" }}>
       {count} {label}
     </p>
   );

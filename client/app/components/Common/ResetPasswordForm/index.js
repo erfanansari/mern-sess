@@ -32,12 +32,11 @@ const ResetPasswordForm = (props) => {
           <Col xs="12" lg="6">
             <Input
               type={"password"}
-              error={formErrors["password"]}
-              // label={"Password"}
-              label="رمز عبور"
-              name={"password"}
-              placeholder={isToken ? "رمز عبور" : "رمز عبور قبلی"}
-              value={resetFormData.password}
+              error={formErrors["confirmPassword"]}
+              label="رمز عبور جدید"
+              name={"confirmPassword"}
+              placeholder="رمز عبور جدید"
+              value={resetFormData.confirmPassword}
               onInputChange={(name, value) => {
                 resetPasswordChange(name, value);
               }}
@@ -46,11 +45,11 @@ const ResetPasswordForm = (props) => {
           <Col xs="12" lg="6">
             <Input
               type={"password"}
-              error={formErrors["confirmPassword"]}
-              label="تکرار رمز عبور"
-              name={"confirmPassword"}
-              placeholder="تکرار رمز عبور"
-              value={resetFormData.confirmPassword}
+              error={formErrors["password"]}
+              label="رمز عبور"
+              name={"password"}
+              placeholder={isToken ? "رمز عبور" : "رمز عبور قبلی"}
+              value={resetFormData.password}
               onInputChange={(name, value) => {
                 resetPasswordChange(name, value);
               }}

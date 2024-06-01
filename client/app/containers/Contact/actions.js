@@ -4,17 +4,17 @@
  *
  */
 
-import { success } from 'react-notification-system-redux';
-import axios from 'axios';
+import { success } from "react-notification-system-redux";
+import axios from "axios";
 
 import {
   CONTACT_FORM_CHANGE,
   SET_CONTACT_FORM_ERRORS,
-  CONTACT_FORM_RESET
-} from './constants';
-import handleError from '../../utils/error';
-import { allFieldsValidation } from '../../utils/validation';
-import { API_URL } from '../../constants';
+  CONTACT_FORM_RESET,
+} from "./constants";
+import handleError from "../../utils/error";
+import { allFieldsValidation } from "../../utils/validation";
+import { API_URL } from "../../constants";
 
 export const contactFormChange = (name, value) => {
   let formData = {};
@@ -22,7 +22,7 @@ export const contactFormChange = (name, value) => {
 
   return {
     type: CONTACT_FORM_CHANGE,
-    payload: formData
+    payload: formData,
   };
 };
 
@@ -30,19 +30,19 @@ export const contactUs = () => {
   return async (dispatch, getState) => {
     try {
       const rules = {
-        name: 'required',
-        email: 'required|email',
-        message: 'required|min:10'
+        name: "required",
+        email: "required|email",
+        message: "required|min:10",
       };
 
       const contact = getState().contact.contactFormData;
 
       const { isValid, errors } = allFieldsValidation(contact, rules, {
-        'required.name': 'Name is required.',
-        'required.email': 'Email is required.',
-        'email.email': 'Email format is invalid.',
-        'required.message': 'Message is required.',
-        'min.message': 'Message must be at least 10 characters.'
+        "required.name": "نام لازم است ",
+        "required.email": "ایمیل لازم است",
+        "email.email": "فرمت ایمیل نامعتبر است",
+        "required.message": "پیام لازم است",
+        "min.message": "پیام باید حداقل 10 کاراکتر باشد",
       });
 
       if (!isValid) {
@@ -53,8 +53,8 @@ export const contactUs = () => {
 
       const successfulOptions = {
         title: `${response.data.message}`,
-        position: 'tr',
-        autoDismiss: 1
+        position: "tr",
+        autoDismiss: 1,
       };
 
       dispatch({ type: CONTACT_FORM_RESET });

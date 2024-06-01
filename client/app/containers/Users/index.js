@@ -4,26 +4,26 @@
  *
  */
 
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import actions from '../../actions';
+import actions from "../../actions";
 
-import UserList from '../../components/Manager/UserList';
-import UserSearch from '../../components/Manager/UserSearch';
-import SubPage from '../../components/Manager/SubPage';
-import SearchResultMeta from '../../components/Manager/SearchResultMeta';
-import NotFound from '../../components/Common/NotFound';
-import LoadingIndicator from '../../components/Common/LoadingIndicator';
-import Pagination from '../../components/Common/Pagination';
+import UserList from "../../components/Manager/UserList";
+import UserSearch from "../../components/Manager/UserSearch";
+import SubPage from "../../components/Manager/SubPage";
+import SearchResultMeta from "../../components/Manager/SearchResultMeta";
+import NotFound from "../../components/Common/NotFound";
+import LoadingIndicator from "../../components/Common/LoadingIndicator";
+import Pagination from "../../components/Common/Pagination";
 
 class Users extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      search: ''
+      search: "",
     };
   }
 
@@ -31,15 +31,15 @@ class Users extends React.PureComponent {
     this.props.fetchUsers();
   }
 
-  handleUserSearch = e => {
+  handleUserSearch = (e) => {
     if (e.value.length >= 2) {
-      this.props.searchUsers({ name: 'user', value: e.value });
+      this.props.searchUsers({ name: "user", value: e.value });
       this.setState({
-        search: e.value
+        search: e.value,
       });
     } else {
       this.setState({
-        search: ''
+        search: "",
       });
     }
   };
@@ -59,8 +59,8 @@ class Users extends React.PureComponent {
     const displayUsers = filteredUsers && filteredUsers.length > 0;
 
     return (
-      <div className='users-dashboard'>
-        <SubPage title='Users' />
+      <div className="users-dashboard">
+        <SubPage title="کاربران" />
         <UserSearch
           onSearch={this.handleUserSearch}
           onSearchSubmit={searchUsers}
@@ -75,24 +75,24 @@ class Users extends React.PureComponent {
               />
             )}
             <SearchResultMeta
-              label='users'
+              label="کاربر"
               count={isSearch ? filteredUsers.length : advancedFilters.count}
             />
             <UserList users={filteredUsers} />
           </>
         )}
-        {!isLoading && !displayUsers && <NotFound message='No users found.' />}
+        {!isLoading && !displayUsers && <NotFound message="No users found." />}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     users: state.users.users,
     searchedUsers: state.users.searchedUsers,
     advancedFilters: state.users.advancedFilters,
-    isLoading: state.users.isLoading
+    isLoading: state.users.isLoading,
   };
 };
 

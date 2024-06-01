@@ -43,10 +43,10 @@ export const login = () => {
     const user = getState().login.loginFormData;
 
     const { isValid, errors } = allFieldsValidation(user, rules, {
-      "required.email": "Email is required.",
-      "email.email": "Email format is invalid.",
-      "required.password": "Password is required.",
-      "min.password": "Password must be at least 6 characters.",
+      "required.email": "ایمیل لازم است",
+      "email.email": "فرمت ایمیل نامعتبر است",
+      "required.password": "رمز عبور لازم است",
+      "min.password": "رمز عبور باید حداقل 6 کاراکتر باشد",
     });
 
     if (!isValid) {
@@ -76,7 +76,7 @@ export const login = () => {
 
       dispatch({ type: LOGIN_RESET });
     } catch (error) {
-      const title = `Please try to login again!`;
+      const title = `!خطا در ورود به سیستم`;
       handleError(error, dispatch, title);
     } finally {
       dispatch({ type: SET_LOGIN_SUBMITTING, payload: false });

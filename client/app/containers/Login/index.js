@@ -78,12 +78,6 @@ class Login extends React.PureComponent {
           <hr />
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
             <div className="d-flex justify-content-between align-items-center mb-3 mb-md-0">
-              <Link
-                className="redirect-link forgot-password-link"
-                to={"/forgot-password"}
-              >
-                رمز عبور خود را فراموش کرده اید؟
-              </Link>
               <Button
                 text="ساخت اکانت"
                 variant="link"

@@ -38,7 +38,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <Container>
-        <div className="footer-content">
+        {/* <div className="footer-content">
           <div className="footer-block">
             <div className="block-title">
               <h3 className="text-uppercase">Customer Service</h3>
@@ -55,29 +55,18 @@ const Footer = () => {
               <ul>{footerLinks}</ul>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="footer-copyright">
           <span>© {new Date().getFullYear()} SESS</span>
         </div>
         <ul className="footer-social-item">
           <li>
-            <a href="/#facebook" rel="noreferrer noopener" target="_blank">
-              <span className="facebook-icon" />
-            </a>
-          </li>
-          <li>
-            <a href="/#instagram" rel="noreferrer noopener" target="_blank">
+            <a
+              href="https://www.instagram.com/oxkord/"
+              rel="noreferrer noopener"
+              target="_blank"
+            >
               <span className="instagram-icon" />
-            </a>
-          </li>
-          <li>
-            <a href="/#pinterest" rel="noreferrer noopener" target="_blank">
-              <span className="pinterest-icon" />
-            </a>
-          </li>
-          <li>
-            <a href="/#twitter" rel="noreferrer noopener" target="_blank">
-              <span className="twitter-icon" />
             </a>
           </li>
         </ul>

@@ -4,114 +4,90 @@
  *
  */
 
-import React from 'react';
+import React from "react";
 
-import { Row, Col } from 'reactstrap';
+import { Row, Col } from "reactstrap";
 
-import Checkbox from '../../Common/Checkbox';
-import Input from '../../Common/Input';
-import Button from '../../Common/Button';
+import Checkbox from "../../Common/Checkbox";
+import Input from "../../Common/Input";
+import Button from "../../Common/Button";
 
-const EditAddress = props => {
+const EditAddress = (props) => {
   const { address, addressChange, formErrors, updateAddress, deleteAddress } =
     props;
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     updateAddress();
   };
 
   return (
-    <div className='edit-address'>
-      <form onSubmit={handleSubmit} noValidate>
+    <div className="edit-address">
+      <form onSubmit={handleSubmit} noValidate style={{ textAlign: "right" }}>
         <Row>
-          <Col xs='12' md='12'>
+          <Col xs="12" md="12">
             <Input
-              type={'text'}
-              error={formErrors['address']}
-              label={'Address'}
-              name={'address'}
-              placeholder={'Address: Street, House No / Apartment No'}
-              value={address.address}
+              type={"text"}
+              error={formErrors["title"]}
+              label="عنوان"
+              name={"title"}
+              placeholder="عنوان"
+              value={address.title}
               onInputChange={(name, value) => {
                 addressChange(name, value);
               }}
             />
           </Col>
-          <Col xs='12' md='12'>
+          <Col xs="12" md="12">
             <Input
-              type={'text'}
-              error={formErrors['city']}
-              label={'City'}
-              name={'city'}
-              placeholder={'City'}
-              value={address.city}
+              type={"text"}
+              error={formErrors["description"]}
+              label="توضیحات"
+              name={"description"}
+              placeholder="توضیحات"
+              value={address.description}
               onInputChange={(name, value) => {
                 addressChange(name, value);
               }}
             />
           </Col>
-          <Col xs='12' lg='6'>
+          <Col xs="12" lg="6">
             <Input
-              type={'text'}
-              error={formErrors['state']}
-              label={'State'}
-              name={'state'}
-              placeholder={'State'}
-              value={address.state}
+              type={"text"}
+              error={formErrors["employer"]}
+              label={"استخدام کننده"}
+              name={"employer"}
+              placeholder={"استخدام کننده"}
+              value={address.employer}
               onInputChange={(name, value) => {
                 addressChange(name, value);
               }}
             />
           </Col>
-          <Col xs='12' lg='6'>
+          <Col xs="12" lg="6">
             <Input
-              type={'text'}
-              error={formErrors['country']}
-              label={'Country'}
-              name={'country'}
-              placeholder={'Please Enter Your Country'}
-              value={address.country}
+              type={"text"}
+              error={formErrors["location"]}
+              label={"مکان"}
+              name={"location"}
+              placeholder={"مکان"}
+              value={address.location}
               onInputChange={(name, value) => {
-                addressChange(name, value);
-              }}
-            />
-          </Col>
-          <Col xs='12' lg='6'>
-            <Input
-              type={'text'}
-              error={formErrors['zipCode']}
-              label={'Zipcode'}
-              name={'zipCode'}
-              placeholder={'Please Enter Your Zipcode'}
-              value={address.zipCode}
-              onInputChange={(name, value) => {
-                addressChange(name, value);
-              }}
-            />
-          </Col>
-          <Col xs='12' md='12'>
-            <Checkbox
-              id={'default'}
-              label={'As the Default'}
-              name={'isDefault'}
-              checked={address.isDefault}
-              onChange={(name, value) => {
                 addressChange(name, value);
               }}
             />
           </Col>
         </Row>
         <hr />
-        <div className='d-flex flex-column flex-md-row'>
+        <div className="d-flex flex-column flex-md-row">
           <Button
-            type='submit'
-            text='Save'
-            className='mb-3 mb-md-0 mr-0 mr-md-3'
+            type="submit"
+            text="ذخیره"
+            className="mb-3 mb-md-0 mr-0 mr-md-3"
           />
           <Button
-            variant='danger'
-            text='Delete'
+            variant="danger"
+            text="حذف"
             onClick={() => deleteAddress(address._id)}
           />
         </div>
