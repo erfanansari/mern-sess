@@ -51,6 +51,30 @@ router.get("/item/:slug", async (req, res) => {
   }
 });
 
+router.get("/search", async (req, res) => {
+  try {
+    const { search } = req.query;
+
+    const regex = new RegExp(search, "i");
+
+    const events = await Product.find({
+      $or: [
+        { name: { $regex: regex } },
+        { description: { $regex: regex } },
+        { location: { $regex: regex } },
+      ],
+    });
+
+    res.status(200).json({
+      events,
+    });
+  } catch (error) {
+    res.status(400).json({
+      error: "Your request could not be processed. Please try again.",
+    });
+  }
+});
+
 // fetch product name search api
 router.get("/list/search/:name", async (req, res) => {
   try {

@@ -1,0 +1,10 @@
+/*
+ *
+ * EVENTS constants
+ *
+ */
+
+export const FETCH_EVENTS = "src/EVENTS/FETCH_EVENTS";
+export const FETCH_SEARCHED_EVENTS = "src/EVENTS/FETCH_SEARCHED_EVENTS";
+export const SET_ADVANCED_FILTERS = "src/EVENTS/SET_ADVANCED_FILTERS";
+export const SET_EVENTS_LOADING = "src/EVENTS/SET_EVENTS_LOADING";

@@ -21,7 +21,10 @@ class List extends React.PureComponent {
   }
 
   render() {
-    const { history, products, isLoading, noHeader } = this.props;
+    const { history, products, isLoading, noHeader, searchedEvents } =
+      this.props;
+    const filteredEvents =
+      searchedEvents.length > 0 ? searchedEvents : products;
 
     if (noHeader) {
       return (
@@ -29,7 +32,7 @@ class List extends React.PureComponent {
           {isLoading ? (
             <LoadingIndicator inline />
           ) : products.length > 0 ? (
-            <ProductList products={products} noHeader={noHeader} />
+            <ProductList products={filteredEvents} noHeader={noHeader} />
           ) : (
             <NotFound message="رویدادی یافت نشد." />
           )}
@@ -47,7 +50,7 @@ class List extends React.PureComponent {
           {isLoading ? (
             <LoadingIndicator inline />
           ) : products.length > 0 ? (
-            <ProductList products={products} />
+            <ProductList products={filteredEvents} />
           ) : (
             <NotFound message="رویدادی یافت نشد." />
           )}
@@ -60,8 +63,9 @@ class List extends React.PureComponent {
 const mapStateToProps = (state) => {
   return {
     products: state.product.products,
-    isLoading: state.product.isLoading,
+    isLoading: state.events.isLoading,
     user: state.account.user,
+    searchedEvents: state.events.searchedEvents,
   };
 };
 
