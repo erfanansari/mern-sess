@@ -113,10 +113,17 @@ $ npm start
 ```
 
 
-# - Job model is needed
-# - User model is needed
-# - Admin should be able to create events like seminars, workshops and meetings(this can be labeld as categories)
-# - User should be able to search between different events
-# - Event model is needed
-# - User should be able to participate in a an event
-# - Guest user can search between users and jobs
+# TODO
+# - General
+#   - Job model is needed
+#   - Event model is needed
+#   - Persian language support
+#   - User route to see all users(like resume)
+# - Admin
+#   - should be able to create events like seminars, workshops and meetings(this can be label as categories)
+#   - should be able to create jobs
+# - User
+#   - should be able to search between different events
+#   - should be able to participate in a an event
+# - Guest
+#   - user can search between users and jobs

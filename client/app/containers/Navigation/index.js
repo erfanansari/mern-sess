@@ -243,7 +243,7 @@ class Navigation extends React.PureComponent {
                       Events
                     </NavLink>
                   </NavItem> */}
-                  <NavItem>
+                  {/* <NavItem>
                     <NavLink
                       tag={ActiveLink}
                       to="/jobs"
@@ -251,7 +251,7 @@ class Navigation extends React.PureComponent {
                     >
                       Jobs
                     </NavLink>
-                  </NavItem>
+                  </NavItem> */}
                   <NavItem>
                     <NavLink
                       tag={ActiveLink}
