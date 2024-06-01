@@ -29,7 +29,7 @@ class List extends React.PureComponent {
           {isLoading ? (
             <LoadingIndicator inline />
           ) : products.length > 0 ? (
-            <ProductList products={products} />
+            <ProductList products={products} noHeader={noHeader} />
           ) : (
             <NotFound message="رویدادی یافت نشد." />
           )}

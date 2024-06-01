@@ -8,7 +8,7 @@ const role = require("../../middleware/role");
 const { ROLES } = require("../../constants");
 
 // search users api
-router.get("/search", auth, role.check(ROLES.Admin), async (req, res) => {
+router.get("/search", async (req, res) => {
   try {
     const { search } = req.query;
 
@@ -36,7 +36,7 @@ router.get("/search", auth, role.check(ROLES.Admin), async (req, res) => {
 });
 
 // fetch users api
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const { page = 1, limit = 10 } = req.query;
 
@@ -90,7 +90,6 @@ router.put("/", auth, async (req, res) => {
     const update = req.body.profile;
     const query = { _id: user };
 
-    console.log("update", update);
     const userDoc = await User.findOneAndUpdate(query, update, {
       new: true,
     });

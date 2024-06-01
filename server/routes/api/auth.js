@@ -55,7 +55,7 @@ router.post("/login", async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({
         success: false,
-        error: "Password Incorrect",
+        error: "رمز عبور اشتباه است",
       });
     }
 
@@ -232,7 +232,7 @@ router.post("/reset/:token", async (req, res) => {
     res.status(200).json({
       success: true,
       message:
-        "Password changed successfully. Please login with your new password.",
+        "رمز عبور با موفقیت تغییر یافت. لطفا با رمز عبور جدید خود وارد شوید.",
     });
   } catch (error) {
     res.status(400).json({
@@ -247,7 +247,7 @@ router.post("/reset", auth, async (req, res) => {
     const email = req.user.email;
 
     if (!email) {
-      return res.status(401).send("Unauthenticated");
+      return res.status(401).send("احراز ناموفق");
     }
 
     if (!password) {
@@ -277,7 +277,7 @@ router.post("/reset", auth, async (req, res) => {
     res.status(200).json({
       success: true,
       message:
-        "Password changed successfully. Please login with your new password.",
+        "رمز عبور با موفقیت تغییر یافت. لطفا با رمز عبور جدید خود وارد شوید.",
     });
   } catch (error) {
     res.status(400).json({

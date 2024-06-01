@@ -4,12 +4,12 @@
  *
  */
 
-import React from 'react';
+import React from "react";
 
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 
-const SelectOption = props => {
+const SelectOption = (props) => {
   const {
     disabled,
     error,
@@ -18,24 +18,24 @@ const SelectOption = props => {
     options,
     defaultValue,
     value,
-    handleSelectChange
+    handleSelectChange,
   } = props;
 
-  const _handleSelectChange = value => {
+  const _handleSelectChange = (value) => {
     handleSelectChange(value);
   };
 
   const animatedComponents = makeAnimated();
 
-  const styles = `select-box${error ? ' invalid' : ''}`;
+  const styles = `select-box${error ? " invalid" : ""}`;
 
   return (
     <div className={styles}>
       {label && <label>{label}</label>}
       <Select
         isDisabled={disabled}
-        className='select-container'
-        classNamePrefix='react-select'
+        className="select-container"
+        classNamePrefix="react-select"
         components={animatedComponents}
         isMulti={multi}
         options={options}
@@ -44,7 +44,7 @@ const SelectOption = props => {
         onChange={_handleSelectChange}
         styles={dropdownStyles}
       />
-      <span className='invalid-message'>{error && error[0]}</span>
+      <span className="invalid-message">{error && error[0]}</span>
     </div>
   );
 };
@@ -55,73 +55,70 @@ const dropdownStyles = {
   control: (styles, { isFocused }) => {
     return {
       ...styles,
-      color: '#323232',
-      fontFamily: 'Poppins',
-      backgroundColor: 'white',
-      transition: '0.3s',
-      boxShadow: 'none',
+      color: "#323232",
+      backgroundColor: "white",
+      transition: "0.3s",
+      boxShadow: "none",
 
-      borderColor: isFocused ? '#bdcbd2' : '#e4e6eb',
+      borderColor: isFocused ? "#bdcbd2" : "#e4e6eb",
 
-      ':hover': {
-        borderColor: !isFocused ? '#e4e6eb' : '#bdcbd2',
-        boxShadow: 'none'
-      }
+      ":hover": {
+        borderColor: !isFocused ? "#e4e6eb" : "#bdcbd2",
+        boxShadow: "none",
+      },
     };
   },
-  menu: styles => {
+  menu: (styles) => {
     return {
       ...styles,
-      zIndex: 2
+      zIndex: 2,
     };
   },
   option: (styles, { isDisabled, isFocused, isSelected }) => {
     return {
       ...styles,
-      color: '#323232',
-      fontFamily: 'Poppins',
+      color: "#323232",
       backgroundColor: isDisabled
         ? undefined
         : isSelected
-        ? '#eceef3'
+        ? "#eceef3"
         : isFocused
-        ? '#f8f9fa'
+        ? "#f8f9fa"
         : undefined,
 
-      ':hover': {
-        ...styles[':hover'],
+      ":hover": {
+        ...styles[":hover"],
         backgroundColor: isDisabled
           ? undefined
           : isSelected
           ? undefined
-          : '#f8f9fa'
+          : "#f8f9fa",
       },
-      ':active': {
-        ...styles[':active'],
-        backgroundColor: !isDisabled ? '#eceef3' : undefined
-      }
+      ":active": {
+        ...styles[":active"],
+        backgroundColor: !isDisabled ? "#eceef3" : undefined,
+      },
     };
   },
-  indicatorSeparator: styles => ({
+  indicatorSeparator: (styles) => ({
     ...styles,
-    display: 'none'
+    display: "none",
   }),
   dropdownIndicator: (base, { isFocused }) => ({
     ...base,
-    transform: isFocused ? 'rotate(180deg)' : undefined,
-    transition: 'transform 0.3s'
+    transform: isFocused ? "rotate(180deg)" : undefined,
+    transition: "transform 0.3s",
   }),
-  input: styles => ({
+  input: (styles) => ({
     ...styles,
-    color: '#323232'
+    color: "#323232",
   }),
-  placeholder: styles => ({
+  placeholder: (styles) => ({
     ...styles,
-    color: '#323232'
+    color: "#323232",
   }),
-  singleValue: styles => ({
+  singleValue: (styles) => ({
     ...styles,
-    color: '#323232',
-    fontFamily: 'Poppins'
-  })
+    color: "#323232",
+  }),
 };

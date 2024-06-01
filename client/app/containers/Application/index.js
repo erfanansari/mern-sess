@@ -1,3 +1,4 @@
+import "regenerator-runtime/runtime";
 /**
  *
  * Application
@@ -15,7 +16,6 @@ import actions from "../../actions";
 // routes
 import Login from "../Login";
 import Signup from "../Signup";
-import MerchantSignup from "../MerchantSignup";
 import HomePage from "../Homepage";
 import Dashboard from "../Dashboard";
 import Support from "../Support";
@@ -37,6 +37,7 @@ import AuthSuccess from "../AuthSuccess";
 import Footer from "../../components/Common/Footer";
 import Page404 from "../../components/Common/Page404";
 import { CART_ITEMS } from "../../constants";
+import AllUsers from "../AllUsers";
 
 class Application extends React.PureComponent {
   constructor(props) {
@@ -84,6 +85,7 @@ class Application extends React.PureComponent {
               <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route path="/events" component={Jobs} />
+                <Route path="/users" component={AllUsers} />
                 <Route path="/shop" component={Shop} />
                 <Route path="/sell" component={Sell} />
                 <Route path="/contact" component={Contact} />
@@ -93,10 +95,6 @@ class Application extends React.PureComponent {
                 <Route path="/order/:id" component={OrderPage} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Signup} />
-                <Route
-                  path="/merchant-signup/:token"
-                  component={MerchantSignup}
-                />
                 <Route path="/forgot-password" component={ForgotPassword} />
                 <Route
                   path="/reset-password/:token"

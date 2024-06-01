@@ -25,9 +25,8 @@ class List extends React.PureComponent {
     if (noHeader) {
       return (
         <>
-          {" "}
           {addresses.length > 0 ? (
-            <AddressList addresses={addresses} />
+            <AddressList addresses={addresses} noHeader={noHeader} />
           ) : (
             <NotFound message="هیچ شغلی پیدا نشد" />
           )}

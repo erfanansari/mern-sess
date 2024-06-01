@@ -36,21 +36,6 @@ import Menu from "../NavigationMenu";
 import Cart from "../Cart";
 
 class Navigation extends React.PureComponent {
-  componentDidMount() {
-    this.props.fetchStoreBrands();
-    this.props.fetchStoreCategories();
-  }
-
-  toggleBrand() {
-    this.props.fetchStoreBrands();
-    this.props.toggleBrand();
-  }
-
-  toggleMenu() {
-    this.props.fetchStoreCategories();
-    this.props.toggleMenu();
-  }
-
   getSuggestionValue(suggestion) {
     return suggestion.name;
   }
@@ -128,7 +113,7 @@ class Navigation extends React.PureComponent {
     } = this.props;
 
     const inputProps = {
-      placeholder: "جستجو در بین رویداد ها",
+      placeholder: "جستجو در بین شغل ها",
       value: searchValue,
       onChange: (_, { newValue }) => {
         onSearch(newValue);
@@ -181,24 +166,6 @@ class Navigation extends React.PureComponent {
                 }}
               />
             </Col>
-            {/* <Col
-              xs={{ size: 12, order: 2 }}
-              sm={{ size: 12, order: 2 }}
-              md={{ size: 4, order: 1 }}
-              lg={{ size: 5, order: 3 }}
-              className="desktop-hidden"
-            >
-              <div className="header-links">
-                <Button
-                  borderless
-                  variant="empty"
-                  ariaLabel="open the menu"
-                  icon={<BarsIcon />}
-                  onClick={() => this.toggleMenu()}
-                />
-                <CartIcon cartItems={cartItems} onClick={toggleCart} />
-              </div>
-            </Col> */}
             <Col
               xs={{ size: 12, order: 2 }}
               sm={{ size: 12, order: 2 }}
@@ -224,24 +191,15 @@ class Navigation extends React.PureComponent {
                       </DropdownMenu>
                     </Dropdown>
                   )}
-                  {/* <NavItem>
+                  <NavItem>
                     <NavLink
                       tag={ActiveLink}
-                      to="/events"
+                      to="/users"
                       activeClassName="active"
                     >
-                      Events
+                      کاربران
                     </NavLink>
-                  </NavItem> */}
-                  {/* <NavItem>
-                    <NavLink
-                      tag={ActiveLink}
-                      to="/jobs"
-                      activeClassName="active"
-                    >
-                      Jobs
-                    </NavLink>
-                  </NavItem> */}
+                  </NavItem>
                   <NavItem>
                     <NavLink
                       tag={ActiveLink}

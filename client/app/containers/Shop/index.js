@@ -18,7 +18,6 @@ import BrandsShop from "../BrandsShop";
 import CategoryShop from "../CategoryShop";
 
 import Page404 from "../../components/Common/Page404";
-import ProductFilter from "../../components/Store/ProductFilter";
 import Pagination from "../../components/Common/Pagination";
 import SelectOption from "../../components/Common/SelectOption";
 

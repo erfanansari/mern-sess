@@ -53,10 +53,6 @@ const prepareTemplate = (type, host, data) => {
       message = template.signupEmail(data);
       break;
 
-    case "merchant-signup":
-      message = template.merchantSignup(host, data);
-      break;
-
     case "merchant-welcome":
       message = template.merchantWelcome(data);
       break;

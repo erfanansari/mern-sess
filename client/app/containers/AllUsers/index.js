@@ -1,6 +1,6 @@
-/*
+/**
  *
- * Users
+ * Events
  *
  */
 
@@ -9,16 +9,16 @@ import React from "react";
 import { connect } from "react-redux";
 
 import actions from "../../actions";
-
+import List from "../Product/List";
 import UserList from "../../components/Manager/UserList";
-import UserSearch from "../../components/Manager/UserSearch";
 import SubPage from "../../components/Manager/SubPage";
-import SearchResultMeta from "../../components/Manager/SearchResultMeta";
-import NotFound from "../../components/Common/NotFound";
+import UserSearch from "../../components/Manager/UserSearch";
 import LoadingIndicator from "../../components/Common/LoadingIndicator";
+import SearchResultMeta from "../../components/Manager/SearchResultMeta";
 import Pagination from "../../components/Common/Pagination";
+import NotFound from "../../components/Common/NotFound";
 
-class Users extends React.PureComponent {
+class AllUsers extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -51,12 +51,21 @@ class Users extends React.PureComponent {
   render() {
     const { users, isLoading, searchedUsers, searchUsers, advancedFilters } =
       this.props;
+    const loggedUser = this.props.user;
 
     const { search } = this.state;
     const isSearch = search.length > 0;
-    const filteredUsers = search ? searchedUsers : users;
+    const tempUsers = isSearch ? searchedUsers : users;
+    const filteredUsers =
+      loggedUser.role === "ROLE ADMIN"
+        ? tempUsers
+        : tempUsers.filter((user) => user.role !== "ROLE ADMIN");
     const displayPagination = advancedFilters.totalPages > 1;
     const displayUsers = filteredUsers && filteredUsers.length > 0;
+    console.log(
+      "isSearch ? filteredUsers.length : advancedFilters.count",
+      advancedFilters
+    );
 
     return (
       <div className="users-dashboard">
@@ -76,9 +85,15 @@ class Users extends React.PureComponent {
             )}
             <SearchResultMeta
               label="کاربر"
-              count={isSearch ? filteredUsers.length : advancedFilters.count}
+              count={
+                isSearch
+                  ? filteredUsers.length
+                  : loggedUser.role === "ROLE ADMIN"
+                  ? advancedFilters.count
+                  : advancedFilters.count - 1
+              }
             />
-            <UserList users={filteredUsers} />
+            <UserList users={filteredUsers} user={loggedUser} />
           </>
         )}
         {!isLoading && !displayUsers && <NotFound message="کاربری پیدا نشد" />}
@@ -97,4 +112,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, actions)(Users);
+export default connect(mapStateToProps, actions)(AllUsers);
