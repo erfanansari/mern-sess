@@ -46,7 +46,7 @@ const ResetPasswordForm = (props) => {
             <Input
               type={"password"}
               error={formErrors["password"]}
-              label="رمز عبور"
+              label="رمز عبور قبلی"
               name={"password"}
               placeholder={isToken ? "رمز عبور" : "رمز عبور قبلی"}
               value={resetFormData.password}

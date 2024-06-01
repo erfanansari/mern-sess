@@ -11,14 +11,14 @@ import { Link } from "react-router-dom";
 import { AddressIcon, CheckIcon } from "../../Common/Icon";
 
 const AddressList = (props) => {
-  const { addresses } = props;
+  const { addresses, noHeader } = props;
 
   return (
     <div className="a-list" style={{ textAlign: "right" }}>
       {addresses.map((address, index) => {
         return (
           <Link
-            to={`/dashboard/job/edit/${address._id}`}
+            to={noHeader ? "#" : `/dashboard/job/edit/${address._id}`}
             key={index}
             className="d-block"
           >

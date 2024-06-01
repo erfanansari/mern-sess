@@ -9,13 +9,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductList = (props) => {
-  const { products } = props;
+  const { products, noHeader } = props;
 
   return (
     <div className="p-list">
       {products.map((product, index) => (
         <Link
-          to={`/dashboard/event/edit/${product._id}`}
+          to={noHeader ? "#" : `/dashboard/event/edit/${product._id}`}
           key={index}
           className="d-flex flex-row-reverse align-items-center mx-0 mb-3 product-box"
         >

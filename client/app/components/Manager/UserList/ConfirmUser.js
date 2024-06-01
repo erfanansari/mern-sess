@@ -16,15 +16,22 @@ const ConfirmUser = ({ user }) => {
     }
   };
 
+  const isAdmin = user.role === "ROLE ADMIN";
+
   return (
     <button
       style={{
         marginTop: "8px",
-        background: user.adminConfirmed ? "#99FF99" : "#E6331A",
+        background: isAdmin
+          ? "#ccc"
+          : user.adminConfirmed
+          ? "#99FF99"
+          : "#E6331A",
         borderRadius: "5px",
         padding: "5px 10px",
       }}
       onClick={toggleConfirm}
+      disabled={isAdmin}
     >
       <span
         style={{
