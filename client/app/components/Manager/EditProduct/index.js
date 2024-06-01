@@ -15,11 +15,6 @@ import Switch from "../../Common/Switch";
 import Button from "../../Common/Button";
 import SelectOption from "../../Common/SelectOption";
 
-const taxableSelect = [
-  { value: 1, label: "Yes" },
-  { value: 0, label: "No" },
-];
-
 const EditProduct = (props) => {
   const {
     user,
@@ -39,22 +34,15 @@ const EditProduct = (props) => {
 
   return (
     <div className="edit-product">
-      <div className="d-flex flex-row mx-0 mb-3">
-        <label className="mr-1">Product link </label>
-        <Link to={`/product/${product.slug}`} className="default-link">
-          {product.slug}
-        </Link>
-      </div>
-
-      <form onSubmit={handleSubmit} noValidate>
+      <form onSubmit={handleSubmit} noValidate style={{ textAlign: "right" }}>
         <Row>
           <Col xs="12">
             <Input
               type={"text"}
               error={formErrors["name"]}
-              label={"Name"}
+              label="نام"
               name={"name"}
-              placeholder={"Product Name"}
+              placeholder="نام رویداد"
               value={product.name}
               onInputChange={(name, value) => {
                 productChange(name, value);
@@ -65,9 +53,9 @@ const EditProduct = (props) => {
             <Input
               type={"text"}
               error={formErrors["slug"]}
-              label={"Slug"}
+              label="اسلاگ"
               name={"slug"}
-              placeholder={"Product Slug"}
+              placeholder="اسلاگ رویداد"
               value={product.slug}
               onInputChange={(name, value) => {
                 productChange(name, value);
@@ -78,53 +66,25 @@ const EditProduct = (props) => {
             <Input
               type={"textarea"}
               error={formErrors["description"]}
-              label={"Description"}
+              label="توضیحات"
               name={"description"}
-              placeholder={"Product Description"}
+              placeholder="توضیحات رویداد"
               value={product.description}
               onInputChange={(name, value) => {
                 productChange(name, value);
               }}
             />
           </Col>
-          <Col xs="12" lg="6">
+          <Col xs="12">
             <Input
-              type={"number"}
-              error={formErrors["quantity"]}
-              label={"Quantity"}
-              name={"quantity"}
-              decimals={false}
-              placeholder={"Product Quantity"}
-              value={product.quantity}
+              type={"text"}
+              error={formErrors["location"]}
+              label="مکان"
+              name={"location"}
+              placeholder="مکان رویداد"
+              value={product.location}
               onInputChange={(name, value) => {
                 productChange(name, value);
-              }}
-            />
-          </Col>
-          <Col xs="12" lg="6">
-            <Input
-              type={"number"}
-              error={formErrors["price"]}
-              label={"Price"}
-              name={"price"}
-              min={1}
-              placeholder={"Product Price"}
-              value={product.price}
-              onInputChange={(name, value) => {
-                productChange(name, value);
-              }}
-            />
-          </Col>
-          <Col xs="12" md="12">
-            <SelectOption
-              error={formErrors["taxable"]}
-              label={"Taxable"}
-              multi={false}
-              name={"taxable"}
-              value={[product.taxable ? taxableSelect[0] : taxableSelect[1]]}
-              options={taxableSelect}
-              handleSelectChange={(value) => {
-                productChange("taxable", value.value);
               }}
             />
           </Col>
@@ -132,7 +92,7 @@ const EditProduct = (props) => {
             <Col xs="12" md="12">
               <SelectOption
                 error={formErrors["brand"]}
-                label={"Select Brand"}
+                label="انتخاب دسته"
                 multi={false}
                 value={product.brand}
                 options={brands}
@@ -146,7 +106,7 @@ const EditProduct = (props) => {
             <Switch
               id={`enable-product-${product._id}`}
               name={"isActive"}
-              label={"Active?"}
+              label="فعال؟"
               checked={product?.isActive}
               toggleCheckboxChange={(value) => {
                 productChange("isActive", value);
@@ -157,15 +117,12 @@ const EditProduct = (props) => {
         </Row>
         <hr />
         <div className="d-flex flex-column flex-md-row">
-          <Button
-            type="submit"
-            text="Save"
-            className="mb-3 mb-md-0 mr-0 mr-md-3"
-          />
+          <Button type="submit" text="ذخیره" />
           <Button
             variant="danger"
-            text="Delete"
+            text="حذف"
             onClick={() => deleteProduct(product._id)}
+            className="mb-3 mb-md-0 mr-0 mr-md-3"
           />
         </div>
       </form>

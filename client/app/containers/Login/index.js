@@ -42,7 +42,7 @@ class Login extends React.PureComponent {
     return (
       <div className="login-form">
         {isLoading && <LoadingIndicator />}
-        <h2>Login</h2>
+        <h2>ورود</h2>
         <hr />
         <form onSubmit={handleSubmit} noValidate>
           <Row>
@@ -51,9 +51,9 @@ class Login extends React.PureComponent {
                 <Input
                   type={"text"}
                   error={formErrors["email"]}
-                  label={"Email Address"}
+                  label={"ادرس ایمیل"}
                   name={"email"}
-                  placeholder={"Please Enter Your Email"}
+                  placeholder={"ایمیل خود را وارد کنید"}
                   value={loginFormData.email}
                   onInputChange={(name, value) => {
                     loginChange(name, value);
@@ -64,9 +64,9 @@ class Login extends React.PureComponent {
                 <Input
                   type={"password"}
                   error={formErrors["password"]}
-                  label={"Password"}
+                  label={"رمز عبور"}
                   name={"password"}
-                  placeholder={"Please Enter Your Password"}
+                  placeholder={"رمز عبور خود را وارد کنید"}
                   value={loginFormData.password}
                   onInputChange={(name, value) => {
                     loginChange(name, value);
@@ -78,25 +78,25 @@ class Login extends React.PureComponent {
           <hr />
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
             <div className="d-flex justify-content-between align-items-center mb-3 mb-md-0">
+              <Link
+                className="redirect-link forgot-password-link"
+                to={"/forgot-password"}
+              >
+                رمز عبور خود را فراموش کرده اید؟
+              </Link>
               <Button
-                type="submit"
-                variant="primary"
-                text="Login"
-                disabled={isSubmitting}
-              />
-              <Button
-                text="Create an account"
+                text="ساخت اکانت"
                 variant="link"
-                className="ml-md-3"
+                // className="ml-md-3"
                 onClick={registerLink}
               />
             </div>
-            <Link
-              className="redirect-link forgot-password-link"
-              to={"/forgot-password"}
-            >
-              Forgot Password?
-            </Link>
+            <Button
+              type="submit"
+              variant="primary"
+              text="ورود"
+              disabled={isSubmitting}
+            />
           </div>
         </form>
       </div>

@@ -218,10 +218,7 @@ export const addProduct = () => {
       const rules = {
         name: "required",
         description: "required|max:200",
-        quantity: "required|numeric",
-        price: "required|numeric",
-        taxable: "required",
-        image: "required",
+        location: "required",
         brand: "required",
       };
 
@@ -234,11 +231,8 @@ export const addProduct = () => {
       const newProduct = {
         name: product.name,
         description: product.description,
-        price: product.price,
-        quantity: product.quantity,
-        image: product.image,
+        location: product.location,
         isActive: product.isActive,
-        taxable: product.taxable.value,
         brand:
           user.role !== ROLES.Merchant
             ? brand !== 0
@@ -252,31 +246,29 @@ export const addProduct = () => {
         "required.description": "Description is required.",
         "max.description":
           "Description may not be greater than 200 characters.",
-        "required.quantity": "Quantity is required.",
-        "required.price": "Price is required.",
-        "required.taxable": "Taxable is required.",
-        "required.image": "Please upload files with jpg, jpeg, png format.",
+        "required.location": "Location is required.",
         "required.brand": "Brand is required.",
       });
 
       if (!isValid) {
         return dispatch({ type: SET_PRODUCT_FORM_ERRORS, payload: errors });
       }
-      const formData = new FormData();
-      if (newProduct.image) {
-        for (const key in newProduct) {
-          if (newProduct.hasOwnProperty(key)) {
-            if (key === "brand" && newProduct[key] === null) {
-              continue;
-            } else {
-              formData.set(key, newProduct[key]);
-            }
-          }
-        }
-      }
+      // const formData = new FormData();
+      //   for (const key in newProduct) {
+      //     if (newProduct.hasOwnProperty(key)) {
+      //       if (key === "brand" && newProduct[key] === null) {
+      //         continue;
+      //       } else {
+      //         formData.set(key, newProduct[key]);
+      //     }
+      //   }
+      // }
 
-      const response = await axios.post(`${API_URL}/product/add`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
+      // console.log('formData', formData)
+
+      const response = await axios.post(`${API_URL}/product/add`, newProduct, {
+        // headers: { "Content-Type": "multipart/form-data" },
+        headers: { "Content-Type": "application/json" },
       });
 
       const successfulOptions = {
@@ -308,9 +300,7 @@ export const updateProduct = () => {
         name: "required",
         slug: "required|alpha_dash",
         description: "required|max:200",
-        quantity: "required|numeric",
-        price: "required|numeric",
-        taxable: "required",
+        location: "required",
         brand: "required",
       };
 
@@ -322,9 +312,7 @@ export const updateProduct = () => {
         name: product.name,
         slug: product.slug,
         description: product.description,
-        quantity: product.quantity,
-        price: product.price,
-        taxable: product.taxable,
+        location: product.location,
         brand: brand != 0 ? brand : null,
       };
 
@@ -336,9 +324,7 @@ export const updateProduct = () => {
         "required.description": "Description is required.",
         "max.description":
           "Description may not be greater than 200 characters.",
-        "required.quantity": "Quantity is required.",
-        "required.price": "Price is required.",
-        "required.taxable": "Taxable is required.",
+        "required.location": "Location is required.",
         "required.brand": "Brand is required.",
       });
 
@@ -456,18 +442,6 @@ const productsFilterOrganizer = (n, v, s) => {
         max: s.max,
         rating: s.rating,
         order: v,
-        page: s.currentPage,
-        limit: s.limit,
-      };
-    case "price":
-      return {
-        name: s.name,
-        category: s.category,
-        brand: s.brand,
-        min: v[0],
-        max: v[1],
-        rating: s.rating,
-        order: s.order,
         page: s.currentPage,
         limit: s.limit,
       };

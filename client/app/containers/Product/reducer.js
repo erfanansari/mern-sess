@@ -36,11 +36,8 @@ const initialState = {
   productFormData: {
     name: "",
     description: "",
-    quantity: 1,
-    price: 1,
-    image: {},
+    location: "",
     isActive: true,
-    taxable: { value: 0, label: "No" },
     brand: {
       value: 0,
       label: "No Options Selected",
@@ -161,11 +158,8 @@ const productReducer = (state = initialState, action) => {
         productFormData: {
           name: "",
           description: "",
-          quantity: 1,
-          price: 1,
-          image: {},
+          location: "",
           isActive: true,
-          taxable: { value: 0, label: "No" },
           brand: {
             value: 0,
             label: "No Options Selected",

@@ -14,11 +14,6 @@ import Switch from "../../Common/Switch";
 import Button from "../../Common/Button";
 import SelectOption from "../../Common/SelectOption";
 
-const taxableSelect = [
-  { value: 1, label: "Yes" },
-  { value: 0, label: "No" },
-];
-
 const AddProduct = (props) => {
   const {
     user,
@@ -27,7 +22,6 @@ const AddProduct = (props) => {
     productChange,
     addProduct,
     brands,
-    image,
   } = props;
 
   const handleSubmit = (event) => {
@@ -37,15 +31,15 @@ const AddProduct = (props) => {
 
   return (
     <div className="add-product">
-      <form onSubmit={handleSubmit} noValidate>
+      <form onSubmit={handleSubmit} noValidate style={{ textAlign: "right" }}>
         <Row>
           <Col xs="12">
             <Input
               type={"text"}
               error={formErrors["name"]}
-              label={"Name"}
+              label="نام"
               name={"name"}
-              placeholder={"Product Name"}
+              placeholder="نام رویداد"
               value={productFormData.name}
               onInputChange={(name, value) => {
                 productChange(name, value);
@@ -56,52 +50,25 @@ const AddProduct = (props) => {
             <Input
               type={"textarea"}
               error={formErrors["description"]}
-              label={"Description"}
+              label="توضیحات"
               name={"description"}
-              placeholder={"Product Description"}
+              placeholder="توضیحات رویداد"
               value={productFormData.description}
               onInputChange={(name, value) => {
                 productChange(name, value);
               }}
             />
           </Col>
-          <Col xs="12" lg="6">
+          <Col xs="12">
             <Input
-              type={"number"}
-              error={formErrors["quantity"]}
-              label={"Quantity"}
-              name={"quantity"}
-              decimals={false}
-              placeholder={"Product Quantity"}
-              value={productFormData.quantity}
+              type={"text"}
+              error={formErrors["location"]}
+              label="مکان"
+              name={"location"}
+              placeholder="مکان رویداد"
+              value={productFormData.location}
               onInputChange={(name, value) => {
                 productChange(name, value);
-              }}
-            />
-          </Col>
-          <Col xs="12" lg="6">
-            <Input
-              type={"number"}
-              error={formErrors["price"]}
-              label={"Price"}
-              name={"price"}
-              min={1}
-              placeholder={"Product Price"}
-              value={productFormData.price}
-              onInputChange={(name, value) => {
-                productChange(name, value);
-              }}
-            />
-          </Col>
-          <Col xs="12" md="12">
-            <SelectOption
-              error={formErrors["taxable"]}
-              label={"Taxable"}
-              name={"taxable"}
-              options={taxableSelect}
-              value={productFormData.taxable}
-              handleSelectChange={(value) => {
-                productChange("taxable", value);
               }}
             />
           </Col>
@@ -110,7 +77,7 @@ const AddProduct = (props) => {
               disabled={user.role === ROLES.Merchant}
               error={formErrors["brand"]}
               name={"brand"}
-              label={"Select Brand"}
+              label="انتخاب دسته"
               value={
                 user.role === ROLES.Merchant ? brands[1] : productFormData.brand
               }
@@ -120,24 +87,11 @@ const AddProduct = (props) => {
               }}
             />
           </Col>
-          <Col xs="12" md="12">
-            <Input
-              type={"file"}
-              error={formErrors["file"]}
-              name={"image"}
-              label={"file"}
-              placeholder={"Please Upload Image"}
-              value={image}
-              onInputChange={(name, value) => {
-                productChange(name, value);
-              }}
-            />
-          </Col>
           <Col xs="12" md="12" className="my-2">
             <Switch
               id={"active-product"}
               name={"isActive"}
-              label={"Active?"}
+              label="فعال؟"
               checked={productFormData.isActive}
               toggleCheckboxChange={(value) => productChange("isActive", value)}
             />
@@ -145,7 +99,7 @@ const AddProduct = (props) => {
         </Row>
         <hr />
         <div className="add-product-actions">
-          <Button type="submit" text="Add Product" />
+          <Button type="submit" text="دخیره" />
         </div>
       </form>
     </div>

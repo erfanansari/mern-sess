@@ -107,11 +107,6 @@ const OrderItems = props => {
                               {item.product?.name}
                             </h4>
                           </Link>
-                          <div className='d-flex align-items-center justify-content-between'>
-                            <span className='price'>
-                              ${item.purchasePrice || item.product.price}
-                            </span>
-                          </div>
                         </>
                       ) : (
                         <h4>Not Available</h4>
@@ -121,14 +116,6 @@ const OrderItems = props => {
                       <p className='mb-1 mr-4'>
                         Status
                         <span className='order-label order-status'>{` ${item.status}`}</span>
-                      </p>
-                      <p className='mb-1 mr-4'>
-                        Quantity
-                        <span className='order-label'>{` ${item.quantity}`}</span>
-                      </p>
-                      <p>
-                        Total Price
-                        <span className='order-label'>{` $${item.totalPrice}`}</span>
                       </p>
                     </div>
                   </div>
@@ -140,16 +127,6 @@ const OrderItems = props => {
                     <p>Status</p>
                   </div>
 
-                  <div className='text-center'>
-                    <p className='order-label'>{` ${item.quantity}`}</p>
-                    <p>Quantity</p>
-                  </div>
-
-                  <div className='text-center'>
-                    <p className='order-label'>{` $${item.totalPrice}`}</p>
-
-                    <p>Total Price</p>
-                  </div>
                 </div>
               </div>
               {item.product && (

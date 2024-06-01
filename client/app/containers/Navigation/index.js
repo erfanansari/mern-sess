@@ -128,7 +128,7 @@ class Navigation extends React.PureComponent {
     } = this.props;
 
     const inputProps = {
-      placeholder: "Search Products",
+      placeholder: "جستجو در بین رویداد ها",
       value: searchValue,
       onChange: (_, { newValue }) => {
         onSearch(newValue);
@@ -147,7 +147,7 @@ class Navigation extends React.PureComponent {
               className="pr-0"
             >
               <div className="brand">
-                {categories && categories.length > 0 && (
+                {/* {categories && categories.length > 0 && (
                   <Button
                     borderless
                     variant="empty"
@@ -156,9 +156,9 @@ class Navigation extends React.PureComponent {
                     icon={<BarsIcon />}
                     onClick={() => this.toggleMenu()}
                   />
-                )}
+                )} */}
                 <Link to="/">
-                  <h1 className="logo">MERN SESS</h1>
+                  <h1 className="logo">SESS</h1>
                 </Link>
               </div>
             </Col>
@@ -181,7 +181,7 @@ class Navigation extends React.PureComponent {
                 }}
               />
             </Col>
-            <Col
+            {/* <Col
               xs={{ size: 12, order: 2 }}
               sm={{ size: 12, order: 2 }}
               md={{ size: 4, order: 1 }}
@@ -198,20 +198,14 @@ class Navigation extends React.PureComponent {
                 />
                 <CartIcon cartItems={cartItems} onClick={toggleCart} />
               </div>
-            </Col>
+            </Col> */}
             <Col
               xs={{ size: 12, order: 2 }}
               sm={{ size: 12, order: 2 }}
               md={{ size: 9, order: 1 }}
               lg={{ size: 4, order: 3 }}
-              // className='px-0'
             >
               <Navbar color="light" light expand="md" className="mt-1 mt-md-0">
-                <CartIcon
-                  className="d-none d-md-block"
-                  cartItems={cartItems}
-                  onClick={toggleCart}
-                />
                 <Nav navbar>
                   {brands && brands.length > 0 && (
                     <Dropdown
@@ -220,10 +214,6 @@ class Navigation extends React.PureComponent {
                       toggle={() => this.toggleBrand()}
                       isOpen={isBrandOpen}
                     >
-                      <DropdownToggle nav>
-                        Brands
-                        <span className="fa fa-chevron-down dropdown-caret"></span>
-                      </DropdownToggle>
                       <DropdownMenu right className="nav-brand-dropdown">
                         <div className="mini-brand">
                           <MiniBrand
@@ -258,36 +248,54 @@ class Navigation extends React.PureComponent {
                       to="/shop"
                       activeClassName="active"
                     >
-                      Shop
+                      رویداد ها
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      tag={ActiveLink}
+                      to="/shop"
+                      activeClassName="active"
+                    >
+                      شغل ها
                     </NavLink>
                   </NavItem>
                   {authenticated ? (
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav>
-                        {user.firstName ? user.firstName : "Welcome"}
+                        {user.firstName ? user.firstName : "خوش اومدی"}
                         <span className="fa fa-chevron-down dropdown-caret"></span>
                       </DropdownToggle>
                       <DropdownMenu right>
                         <DropdownItem
                           onClick={() => history.push("/dashboard")}
+                          className="text-right"
                         >
-                          Dashboard
+                          داشبورد
                         </DropdownItem>
-                        <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
+                        <DropdownItem onClick={signOut} className="text-right">
+                          خروج
+                        </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   ) : (
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav>
-                        Welcome!
+                        !خوش اومدی
                         <span className="fa fa-chevron-down dropdown-caret"></span>
                       </DropdownToggle>
                       <DropdownMenu right>
-                        <DropdownItem onClick={() => history.push("/login")}>
-                          Login
+                        <DropdownItem
+                          onClick={() => history.push("/login")}
+                          className="text-right"
+                        >
+                          ورود
                         </DropdownItem>
-                        <DropdownItem onClick={() => history.push("/register")}>
-                          Sign Up
+                        <DropdownItem
+                          onClick={() => history.push("/register")}
+                          className="text-right"
+                        >
+                          خروج
                         </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>

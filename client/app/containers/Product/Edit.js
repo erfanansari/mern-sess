@@ -4,15 +4,15 @@
  *
  */
 
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import actions from '../../actions';
+import actions from "../../actions";
 
-import EditProduct from '../../components/Manager/EditProduct';
-import SubPage from '../../components/Manager/SubPage';
-import NotFound from '../../components/Common/NotFound';
+import EditProduct from "../../components/Manager/EditProduct";
+import SubPage from "../../components/Manager/SubPage";
+import NotFound from "../../components/Common/NotFound";
 
 class Edit extends React.PureComponent {
   componentDidMount() {
@@ -40,13 +40,13 @@ class Edit extends React.PureComponent {
       productEditChange,
       updateProduct,
       deleteProduct,
-      activateProduct
+      activateProduct,
     } = this.props;
 
     return (
       <SubPage
-        title='Edit Product'
-        actionTitle='Cancel'
+        title="ویرایش رویداد"
+        actionTitle="لغو"
         handleAction={history.goBack}
       >
         {product?._id ? (
@@ -61,19 +61,19 @@ class Edit extends React.PureComponent {
             activateProduct={activateProduct}
           />
         ) : (
-          <NotFound message='No product found.' />
+          <NotFound message="رویدادی یافت نشد." />
         )}
       </SubPage>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     user: state.account.user,
     product: state.product.product,
     formErrors: state.product.editFormErrors,
-    brands: state.brand.brandsSelect
+    brands: state.brand.brandsSelect,
   };
 };
 

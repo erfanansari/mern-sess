@@ -21,25 +21,13 @@ const ProductSchema = new Schema({
     slug: 'name',
     unique: true
   },
-  imageUrl: {
-    type: String
-  },
-  imageKey: {
-    type: String
-  },
   description: {
     type: String,
     trim: true
   },
-  quantity: {
-    type: Number
-  },
-  price: {
-    type: Number
-  },
-  taxable: {
-    type: Boolean,
-    default: false
+  location: {
+    type: String,
+    trim: true
   },
   isActive: {
     type: Boolean,

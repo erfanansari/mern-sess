@@ -4,16 +4,16 @@
  *
  */
 
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import { Row, Col } from 'reactstrap';
-import { Redirect, Link } from 'react-router-dom';
+import { Row, Col } from "reactstrap";
+import { Redirect, Link } from "react-router-dom";
 
-import actions from '../../actions';
+import actions from "../../actions";
 
-import Input from '../../components/Common/Input';
-import Button from '../../components/Common/Button';
+import Input from "../../components/Common/Input";
+import Button from "../../components/Common/Button";
 
 class ForgotPassword extends React.PureComponent {
   render() {
@@ -22,29 +22,29 @@ class ForgotPassword extends React.PureComponent {
       forgotFormData,
       formErrors,
       forgotPasswordChange,
-      forgotPassowrd
+      forgotPassowrd,
     } = this.props;
 
-    if (authenticated) return <Redirect to='/dashboard' />;
+    if (authenticated) return <Redirect to="/dashboard" />;
 
-    const handleSubmit = event => {
+    const handleSubmit = (event) => {
       event.preventDefault();
       forgotPassowrd();
     };
 
     return (
-      <div className='forgot-password-form'>
-        <h3>Forgot Password</h3>
+      <div className="forgot-password-form">
+        <h3>فراموشی رمز عبور</h3>
         <hr />
         <form onSubmit={handleSubmit}>
           <Row>
-            <Col xs='12' md='6'>
+            <Col xs="12" md="12">
               <Input
-                type={'text'}
-                error={formErrors['email']}
-                label={'Email Address'}
-                name={'email'}
-                placeholder={'Please Enter Your Email'}
+                type={"text"}
+                error={formErrors["email"]}
+                label={"آدرس ایمیل"}
+                name={"email"}
+                placeholder={"ایمیل خود را وارد کنید"}
                 value={forgotFormData.email}
                 onInputChange={(name, value) => {
                   forgotPasswordChange(name, value);
@@ -53,16 +53,16 @@ class ForgotPassword extends React.PureComponent {
             </Col>
           </Row>
           <hr />
-          <div className='d-flex flex-column flex-md-row align-items-md-center justify-content-between'>
-            <Button
-              type='submit'
-              variant='primary'
-              text='Send Email'
-              className='mb-3 mb-md-0'
-            />
-            <Link className='redirect-link' to={'/login'}>
-              Back to login
+          <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
+            <Link className="redirect-link" to={"/login"}>
+              بازگشت به صفحه ورود
             </Link>
+            <Button
+              type="submit"
+              variant="primary"
+              text="ارسال ایمیل"
+              className="mb-3 mb-md-0"
+            />
           </div>
         </form>
       </div>
@@ -70,11 +70,11 @@ class ForgotPassword extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     authenticated: state.authentication.authenticated,
     forgotFormData: state.forgotPassword.forgotFormData,
-    formErrors: state.forgotPassword.formErrors
+    formErrors: state.forgotPassword.formErrors,
   };
 };
 

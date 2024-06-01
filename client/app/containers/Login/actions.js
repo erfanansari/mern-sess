@@ -4,24 +4,24 @@
  *
  */
 
-import { success } from 'react-notification-system-redux';
-import axios from 'axios';
-import { push } from 'connected-react-router';
+import { success } from "react-notification-system-redux";
+import axios from "axios";
+import { push } from "connected-react-router";
 
 import {
   LOGIN_CHANGE,
   LOGIN_RESET,
   SET_LOGIN_LOADING,
   SET_LOGIN_FORM_ERRORS,
-  SET_LOGIN_SUBMITTING
-} from './constants';
-import { setAuth, clearAuth } from '../Authentication/actions';
-import setToken from '../../utils/token';
-import handleError from '../../utils/error';
-import { clearCart } from '../Cart/actions';
-import { clearAccount } from '../Account/actions';
-import { allFieldsValidation } from '../../utils/validation';
-import { API_URL } from '../../constants';
+  SET_LOGIN_SUBMITTING,
+} from "./constants";
+import { setAuth, clearAuth } from "../Authentication/actions";
+import setToken from "../../utils/token";
+import handleError from "../../utils/error";
+import { clearCart } from "../Cart/actions";
+import { clearAccount } from "../Account/actions";
+import { allFieldsValidation } from "../../utils/validation";
+import { API_URL } from "../../constants";
 
 export const loginChange = (name, value) => {
   let formData = {};
@@ -29,24 +29,24 @@ export const loginChange = (name, value) => {
 
   return {
     type: LOGIN_CHANGE,
-    payload: formData
+    payload: formData,
   };
 };
 
 export const login = () => {
   return async (dispatch, getState) => {
     const rules = {
-      email: 'required|email',
-      password: 'required|min:6'
+      email: "required|email",
+      password: "required|min:6",
     };
 
     const user = getState().login.loginFormData;
 
     const { isValid, errors } = allFieldsValidation(user, rules, {
-      'required.email': 'Email is required.',
-      'email.email': 'Email format is invalid.',
-      'required.password': 'Password is required.',
-      'min.password': 'Password must be at least 6 characters.'
+      "required.email": "Email is required.",
+      "email.email": "Email format is invalid.",
+      "required.password": "Password is required.",
+      "min.password": "Password must be at least 6 characters.",
     });
 
     if (!isValid) {
@@ -62,12 +62,12 @@ export const login = () => {
       const firstName = response.data.user.firstName;
 
       const successfulOptions = {
-        title: `Hey${firstName ? ` ${firstName}` : ''}, Welcome Back!`,
-        position: 'tr',
-        autoDismiss: 1
+        title: `!سلام${firstName ? ` ${firstName}` : ""}, خوش آمدید`,
+        position: "tr",
+        autoDismiss: 1,
       };
 
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem("token", response.data.token);
 
       setToken(response.data.token);
 
@@ -88,16 +88,16 @@ export const login = () => {
 export const signOut = () => {
   return (dispatch, getState) => {
     const successfulOptions = {
-      title: `You have signed out!`,
-      position: 'tr',
-      autoDismiss: 1
+      title: `خارج شدی`,
+      position: "tr",
+      autoDismiss: 1,
     };
 
     dispatch(clearAuth());
     dispatch(clearAccount());
-    dispatch(push('/login'));
+    dispatch(push("/login"));
 
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
 
     dispatch(success(successfulOptions));
     // dispatch(clearCart());

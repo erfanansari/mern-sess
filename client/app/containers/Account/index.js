@@ -4,13 +4,13 @@
  *
  */
 
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import actions from '../../actions';
+import actions from "../../actions";
 
-import AccountDetails from '../../components/Manager/AccountDetails';
-import SubPage from '../../components/Manager/SubPage';
+import AccountDetails from "../../components/Manager/AccountDetails";
+import SubPage from "../../components/Manager/SubPage";
 
 class Account extends React.PureComponent {
   componentDidMount() {
@@ -21,8 +21,8 @@ class Account extends React.PureComponent {
     const { user, accountChange, updateProfile } = this.props;
 
     return (
-      <div className='account'>
-        <SubPage title={'Account Details'} isMenuOpen={null}>
+      <div className="account">
+        <SubPage title={"جزئیات کاربر"} isMenuOpen={null}>
           <AccountDetails
             user={user}
             accountChange={accountChange}
@@ -34,11 +34,11 @@ class Account extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     user: state.account.user,
     resetFormData: state.resetPassword.resetFormData,
-    formErrors: state.resetPassword.formErrors
+    formErrors: state.resetPassword.formErrors,
   };
 };
 

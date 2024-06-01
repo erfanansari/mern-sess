@@ -4,6 +4,11 @@
 .forgot-password-form {
   margin-inline: auto;
   max-width: 480px;
+  text-align: right;
+}
+
+input::placeholder {
+  text-align: right;
 }
 
 .signup-form {

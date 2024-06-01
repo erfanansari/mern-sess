@@ -4,15 +4,15 @@
  *
  */
 
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import actions from '../../actions';
+import actions from "../../actions";
 
-import EditBrand from '../../components/Manager/EditBrand';
-import SubPage from '../../components/Manager/SubPage';
-import NotFound from '../../components/Common/NotFound';
+import EditBrand from "../../components/Manager/EditBrand";
+import SubPage from "../../components/Manager/SubPage";
+import NotFound from "../../components/Common/NotFound";
 
 class Edit extends React.PureComponent {
   componentDidMount() {
@@ -36,13 +36,13 @@ class Edit extends React.PureComponent {
       brandEditChange,
       updateBrand,
       deleteBrand,
-      activateBrand
+      activateBrand,
     } = this.props;
 
     return (
       <SubPage
-        title='Edit Brand'
-        actionTitle='Cancel'
+        title="ویرایش برند"
+        actionTitle="لغو"
         handleAction={history.goBack}
       >
         {brand?._id ? (
@@ -56,18 +56,18 @@ class Edit extends React.PureComponent {
             activateBrand={activateBrand}
           />
         ) : (
-          <NotFound message='No brand found.' />
+          <NotFound message="No brand found." />
         )}
       </SubPage>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     user: state.account.user,
     brand: state.brand.brand,
-    formErrors: state.brand.editFormErrors
+    formErrors: state.brand.editFormErrors,
   };
 };
 

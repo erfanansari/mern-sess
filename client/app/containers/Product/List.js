@@ -4,16 +4,16 @@
  *
  */
 
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import actions from '../../actions';
+import actions from "../../actions";
 
-import ProductList from '../../components/Manager/ProductList';
-import SubPage from '../../components/Manager/SubPage';
-import LoadingIndicator from '../../components/Common/LoadingIndicator';
-import NotFound from '../../components/Common/NotFound';
+import ProductList from "../../components/Manager/ProductList";
+import SubPage from "../../components/Manager/SubPage";
+import LoadingIndicator from "../../components/Common/LoadingIndicator";
+import NotFound from "../../components/Common/NotFound";
 
 class List extends React.PureComponent {
   componentDidMount() {
@@ -26,16 +26,16 @@ class List extends React.PureComponent {
     return (
       <>
         <SubPage
-          title='Products'
-          actionTitle='Add'
-          handleAction={() => history.push('/dashboard/product/add')}
+          title="رویداد ها"
+          actionTitle="افزودن"
+          handleAction={() => history.push("/dashboard/product/add")}
         >
           {isLoading ? (
             <LoadingIndicator inline />
           ) : products.length > 0 ? (
             <ProductList products={products} />
           ) : (
-            <NotFound message='No products found.' />
+            <NotFound message="رویدادی یافت نشد." />
           )}
         </SubPage>
       </>
@@ -43,11 +43,11 @@ class List extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     products: state.product.products,
     isLoading: state.product.isLoading,
-    user: state.account.user
+    user: state.account.user,
   };
 };
 
