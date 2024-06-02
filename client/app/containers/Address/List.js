@@ -45,11 +45,7 @@ class List extends React.PureComponent {
           actionTitle="افزودن"
           handleAction={() => history.push("/dashboard/job/add")}
         >
-          {list.length > 0 ? (
-            <AddressList addresses={list} />
-          ) : (
-            <NotFound message="هیچ شغلی پیدا نشد" />
-          )}
+          <AddressList list={list} />
         </SubPage>
       </>
     );
