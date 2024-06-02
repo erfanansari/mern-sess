@@ -60,6 +60,7 @@ const createReducer = (history) =>
     review: reviewReducer,
     wishlist: wishListReducer,
     events: eventsReducer,
+    jobs: homepageReducer,
   });
 
 export default createReducer;

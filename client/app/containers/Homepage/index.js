@@ -15,9 +15,51 @@ import banners from "./banners.json";
 import CarouselSlider from "../../components/Common/CarouselSlider";
 import { responsiveOneItemCarousel } from "../../components/Common/CarouselSlider/utils";
 import List from "../Address/List";
+import JobSearch from "../../components/Manager/JobSearch";
+import SubPage from "../../components/Manager/SubPage";
+import NotFound from "../../components/Common/NotFound";
+import LoadingIndicator from "../../components/Common/LoadingIndicator";
 
 class Homepage extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      search: "",
+    };
+  }
+
+  componentDidMount() {
+    this.props.fetchJobs();
+  }
+
+  handleJob = (e) => {
+    if (e.value.length >= 2) {
+      this.props.searchJobs({ name: "job", value: e.value });
+      this.setState({
+        search: e.value,
+      });
+    } else {
+      this.setState({
+        search: "",
+      });
+    }
+  };
+
+  handleOnPagination = (n, v) => {
+    this.props.fetchJobs(v);
+  };
+
   render() {
+    const { jobs, searchJobs, searchedJobs, isLoading, advancedFilters } =
+      this.props;
+    const { search } = this.state;
+    const isSearch = search.length > 0;
+    const filteredJobs = isSearch ? searchedJobs : jobs;
+    const displayPagination = advancedFilters.totalPages > 1;
+    const displayJobs = filteredJobs && filteredJobs.length > 0;
+    console.log({ filteredJobs });
+
     return (
       <div
         className="homepage"
@@ -27,44 +69,24 @@ class Homepage extends React.PureComponent {
           gap: "10px",
         }}
       >
-        <List noHeader />
-        {/* <Row className='flex-row'>
-          <Col xs='12' lg='6' className='order-lg-2 mb-3 px-3 px-md-2'>
-            <div className='home-carousel'>
-              <CarouselSlider
-                swipeable={true}
-                showDots={true}
-                infinite={true}
-                autoPlay={false}
-                slides={banners}
-                responsive={responsiveOneItemCarousel}
-              >
-                {banners.map((item, index) => (
-                  <img key={index} src={item.imageUrl} />
-                ))}
-              </CarouselSlider>
-            </div>
-          </Col>
-          <Col xs='12' lg='3' className='order-lg-1 mb-3 px-3 px-md-2'>
-            <div className='d-flex flex-column h-100 justify-content-between'>
-              <img src='/images/banners/banner-2.jpg' className='mb-3' />
-              <img src='/images/banners/banner-5.jpg' />
-            </div>
-          </Col>
-          <Col xs='12' lg='3' className='order-lg-3 mb-3 px-3 px-md-2'>
-            <div className='d-flex flex-column h-100 justify-content-between'>
-              <img src='/images/banners/banner-2.jpg' className='mb-3' />
-              <img src='/images/banners/banner-6.jpg' />
-            </div>
-          </Col>
-        </Row> */}
+        <SubPage title="رویداد ها" />
+        <JobSearch onSearch={this.handleJob} onSearchSubmit={searchJobs} />
+        {isLoading && <LoadingIndicator />}
+        <List list={filteredJobs} noHeader />
+        {!isLoading && !displayJobs && <NotFound message="شغلی پیدا نشد" />}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  console.log("state", state);
+  return {
+    jobs: state.jobs.jobs,
+    searchedJobs: state.jobs.searchedJobs,
+    advancedFilters: state.jobs.advancedFilters,
+    isLoading: state.jobs.isLoading,
+  };
 };
 
 export default connect(mapStateToProps, actions)(Homepage);

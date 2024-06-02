@@ -15,23 +15,27 @@ import SubPage from "../../components/Manager/SubPage";
 import NotFound from "../../components/Common/NotFound";
 
 class List extends React.PureComponent {
-  componentDidMount() {
-    this.props.fetchAddresses();
-  }
+  // componentDidMount() {
+  //   this.props.fetchAddresses();
+  // }
 
   render() {
-    const { history, addresses, noHeader } = this.props;
+    // const { history, addresses, noHeader } = this.props;
+
+    const { list, noHeader, history } = this.props;
+    console.log({ list });
 
     if (noHeader) {
-      return (
-        <>
-          {addresses.length > 0 ? (
-            <AddressList addresses={addresses} noHeader={noHeader} />
-          ) : (
-            <NotFound message="هیچ شغلی پیدا نشد" />
-          )}
-        </>
-      );
+      return <AddressList list={list} noHeader={noHeader} />;
+      // return (
+      //   <>
+      //     {list.length > 0 ? (
+      //       <AddressList list={list} noHeader={noHeader} />
+      //     ) : (
+      //       <NotFound message="هیچ شغلی پیدا نشد" />
+      //     )}
+      //   </>
+      // );
     }
 
     return (
@@ -41,8 +45,8 @@ class List extends React.PureComponent {
           actionTitle="افزودن"
           handleAction={() => history.push("/dashboard/job/add")}
         >
-          {addresses.length > 0 ? (
-            <AddressList addresses={addresses} />
+          {list.length > 0 ? (
+            <AddressList addresses={list} />
           ) : (
             <NotFound message="هیچ شغلی پیدا نشد" />
           )}

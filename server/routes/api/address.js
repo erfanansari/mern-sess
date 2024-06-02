@@ -5,6 +5,31 @@ const router = express.Router();
 const Address = require("../../models/address");
 const auth = require("../../middleware/auth");
 
+router.get("/search", async (req, res) => {
+  try {
+    const { search } = req.query;
+
+    const regex = new RegExp(search, "i");
+
+    const jobs = await Address.find({
+      $or: [
+        { title: { $regex: regex } },
+        { description: { $regex: regex } },
+        { employer: { $regex: regex } },
+        { location: { $regex: regex } },
+      ],
+    });
+
+    res.status(200).json({
+      jobs,
+    });
+  } catch (error) {
+    res.status(400).json({
+      error: "Your request could not be processed. Please try again.",
+    });
+  }
+});
+
 // add address api
 router.post("/add", auth, async (req, res) => {
   try {
@@ -26,10 +51,10 @@ router.post("/add", auth, async (req, res) => {
 // fetch all addresses api
 router.get("/", auth, async (req, res) => {
   try {
-    const addresses = await Address.find();
+    const jobs = await Address.find();
 
     res.status(200).json({
-      addresses,
+      jobs,
     });
   } catch (error) {
     res.status(400).json({
