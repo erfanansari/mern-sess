@@ -41,8 +41,7 @@ class Events extends React.PureComponent {
   };
 
   render() {
-    const { isLoading, searchedEvents, searchEvents } = this.props;
-    console.log("searchedEvents", searchedEvents);
+    const { searchEvents } = this.props;
     return (
       <>
         <SubPage title="رویداد ها" />
@@ -50,8 +49,6 @@ class Events extends React.PureComponent {
           onSearch={this.handleEvent}
           onSearchSubmit={searchEvents}
         />
-        {/* {isLoading ? <LoadingIndicator /> : <List noHeader />} */}
-        {/* {isLoading ? <LoadingIndicator /> : <List noHeader />} */}
         <List noHeader />
       </>
     );
@@ -59,10 +56,8 @@ class Events extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => {
-  console.log("state", state);
   return {
     products: state.product.storeProducts,
-    // users: state.users.users,
     advancedFilters: state.events.advancedFilters,
     searchEvents: state.events.searchEvents,
     searchedEvents: state.events.searchedEvents,

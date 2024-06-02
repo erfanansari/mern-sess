@@ -62,10 +62,6 @@ class AllUsers extends React.PureComponent {
         : tempUsers.filter((user) => user.role !== "ROLE ADMIN");
     const displayPagination = advancedFilters.totalPages > 1;
     const displayUsers = filteredUsers && filteredUsers.length > 0;
-    console.log(
-      "isSearch ? filteredUsers.length : advancedFilters.count",
-      advancedFilters
-    );
 
     return (
       <div className="users-dashboard">
